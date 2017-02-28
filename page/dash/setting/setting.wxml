@@ -1,0 +1,71 @@
+<import src="../../common/components/dash-tab/index.wxml"></import>
+
+<view class="dash-setting-view">
+    <view class="dash-setting-info" bindtap="navToInfo">
+        <image class="dash-setting-logo" src="{{shop.logo}}"></image>
+        <view>
+            <view class="dash-setting-info-name">
+                {{shop.name}}
+            </view>
+            <view class="dash-setting-info-address">
+                {{shop.addressDetail}}
+            </view>
+        </view>
+        <image class="dash-setting-info-qrcode" src="http://77wdm6.com1.z0.glb.clouddn.com/qrcode.svg"></image>
+        <view class="navigator-arrow"></view>
+    </view>
+
+    <view class="dash-setting-cell" bindtap="navToStatus">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shop_status.svg"></image>
+        <view class="key-value">
+            <view class="dash-setting-cell-title">营业状态</view>
+            <view class="dash-setting-cell-value">{{shop.statusText}}</view>
+        </view>
+        <view></view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToDispatchTime">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/time.svg"></image>
+        <view class="key-value">
+            <view class="dash-setting-cell-title">配送时间</view>
+            <view class="dash-setting-cell-value">{{shop.dispatchTimeStart}}-{{shop.dispatchTimeEnd}}</view>
+        </view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToPhone">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/phone.svg"></image>
+        <view class="key-value">
+            <view class="dash-setting-cell-title">联系电话</view>
+            <view class="dash-setting-cell-value">{{shop.phone}}</view>
+        </view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToDispatchStart">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/dispatch_limit.svg"></image>
+        <view class="key-value">
+            <view class="dash-setting-cell-title">起送金额</view>
+            <view class="dash-setting-cell-value">{{shop.dispatchStartPrice}}元</view>
+        </view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToDispatchCost">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/dispatch_cost_blue.svg"></image>
+        <view class="key-value">
+            <view class="dash-setting-cell-title">配送费用</view>
+            <view class="dash-setting-cell-value">{{shop.dispatchCost}}元</view>
+        </view>
+        <view class="navigator-arrow"></view>
+    </view>
+
+    <view class="dash-setting-cell help">
+        <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/help.svg"></image>
+        <view>帮助</view>
+        <view class="navigator-arrow"></view>
+    </view>
+
+    <template is="dash-tab" data="{{ dashTab }}"></template>
+</view>

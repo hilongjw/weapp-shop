@@ -1,0 +1,53 @@
+<import src="../../common/components/dash-tab/index.wxml"></import>
+
+<view class="dash-product-view">
+    <view class="shop-list-view">
+        <scroll-view class="category-list" scroll-y="true">
+            <view
+                wx:for="{{categoryList}}"
+                wx:key="{{index}}"
+                class="category-list-item {{ item.active ? 'active' : ''  }}" 
+                data-index="{{index}}"
+                bindtap="tapCategory"
+            >{{item.name}}</view>
+
+            <view bindtap="navToCategory"
+                class="category-list-item category-list-item-edit"
+            >分类管理</view>
+        </scroll-view>
+
+        <!--product-list-->
+        <scroll-view class="product-list" scroll-y="true">
+            <view
+                wx:for="{{productList}}"
+                wx:key="{{item.id}}"
+                class="product-list-item {{ item.active ? 'active' : ''  }}" 
+                bindtap="navToProductEdit"
+                data-id="{{item._id}}"
+            >
+                <image 
+                    bindtap="productDetail" 
+                    src="{{item.cover}}" 
+                    class="product-list-cover" 
+                    data-id="{{item.id}}"
+                ></image>
+                <view class="product-list-item-info">
+                    <view                          class="product-list-item-title" 
+                    bindtap="productDetail" 
+                
+                    data-id="{{item.id}}">{{item.name}}</view>
+                    <view class="product-list-item-action">
+                        <view class="product-list-item-price">￥{{item.price}}</view>
+                    </view>
+                </view>
+                <view class="navigator-arrow"></view>
+            </view>
+            <view class="product-list-add" bindtap="navToProductAdd">
+                <image class="product-list-add-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add_product.svg"></image>
+                添加商品
+            </view>
+        </scroll-view>
+    </view>
+
+    <template is="dash-tab" data="{{ dashTab }}"></template>
+</view>

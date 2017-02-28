@@ -1,0 +1,54 @@
+@import "../../common/index.wxss";
+.shop-order-detail-view {
+    padding: 31rpx 0;
+    background: #EFEFF4;
+    min-height: 100%;
+}
+.shop-order-detail {
+    background: #FFFFFF;
+    margin-bottom: 20rpx;
+}
+.shop-order-detail-hd {
+    position: relative;
+    display: flex;
+    padding: 40rpx;
+    justify-content: space-between;
+}
+.shop-order-detail-hd-border {
+    position: absolute;
+    border-bottom: 1rpx solid #E5E5E5;
+    width: 710rpx;
+    bottom: 0;
+    left: 40rpx;
+}
+.shop-order-detail-hd-pre {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    line-height: 58rpx;
+    color: #888888;
+}
+.shop-order-detail-hd-price {
+    font-family: SFUIDisplay-Regular;
+    font-size: 48rpx;
+    line-height: 58rpx;
+    color: #000000;
+}
+.shop-order-detail-bd {
+    padding: 30rpx 40rpx;
+}
+.shop-order-detail-bd-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #888888;
+    margin-bottom: 20rpx;
+}
+.shop-order-detail-bd-val-row {
+    margin-bottom: 20rpx;
+    text-align: right;
+}
+.shop-order-detail {
+    margin-bottom: 60rpx;
+}

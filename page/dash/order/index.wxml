@@ -1,0 +1,74 @@
+<import src="../../common/components/dash-tab/index.wxml"></import>
+
+<view class="dash-order-view">
+    <view class="shop-tab">
+        <view 
+            class="shop-tab-item" 
+            wx:for="{{ topTabNav }}" 
+            wx:for-index="tabIndex"
+            wx:key="{{tabIndex}}" 
+            data-index="{{tabIndex}}"
+            bindtap="tapTopTabNav"
+        >
+            <text 
+                class="shop-tab-item-text {{item.active ? 'active' : '' }}"
+            >{{ item.text }}</text>
+            <view wx:if="{{item.active}}" class="shop-tab-item-light"></view>
+        </view>
+    </view>
+
+    <scroll-view 
+        scroll-y="true" 
+        class="dash-order-list"
+        lower-threshold="50"
+        bindscrolltolower="loadMore"
+    >
+
+        <view 
+            class="dash-order-item" 
+            wx:for="{{orderList}}"
+            wx:key="{{index}}"
+            data-id="{{ item._id }}"
+            bindtap="navToDetail"
+        >
+            <view class="dash-order-item-hd">
+                #{{item.id}}  {{item.dispatchAtText}}
+            </view>
+            <view class="dash-order-item-bd">
+                <view class="dash-order-item-address">
+                    {{item.address.addressDetail}}
+                </view>
+                <view class="dash-order-item-dp-info">
+                    <view>
+                    {{item.address.name}}
+                    </view> 
+                    <view class="dash-order-item-dp-phone">
+                        {{item.address.phone}}
+                    </view>    
+                </view>
+                <view class="dash-order-item-row">
+                    <view class="dash-order-item-row-title">
+                        订单金额：
+                    </view>
+                    <view>
+                        ￥{{item.total}}
+                    </view>
+                </view>
+                <view class="dash-order-item-row">
+                    <view class="dash-order-item-row-title">
+                        下单时间：
+                    </view>
+                    <view>
+                        {{item.createdAt}}
+                    </view>
+                </view>
+            </view>
+            <view class="dash-order-item-ft">
+                查看详情
+            </view>
+        </view>
+
+    </scroll-view>
+
+    <template is="dash-tab" data="{{ dashTab }}"></template>
+</view>

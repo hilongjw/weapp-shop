@@ -1,0 +1,95 @@
+<view class="dash-product-add-view">
+    <view class="weui-cells__title">商品图片，最多上传5张</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+            </view>
+            <view class="weui-uploader__bd">
+                <view class="weui-uploader__files">
+                <block 
+                    wx:for="{{product.images}}"  
+                    wx:for-item="image"
+                    wx:key="{{index}}"
+                >
+                    <view class="weui-uploader__file">
+                    <view 
+                        data-index="{{index}}"
+                        bindtap="removeImage" class="weui-uploader__file-delete">
+                        删除
+                    </view>
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}"             bindtap="previewImage"></image>
+                    </view>
+                </block>
+                </view>
+                <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+            </view>
+            </view>
+        </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">商品信息</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input" bindtap="navToCategory">
+            <view class="weui-cell__hd">
+                <view class="weui-label">分类</view>
+            </view>
+            <view class="weui-cell__bd">
+                <view class="fake-picker {{product.categoryValue ? '' :'empty'}}">
+                    {{ product.categoryValue }}
+                    <view class="navigator-arrow"></view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">名称</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input text-right" placeholder="输入商品名称" bindinput="syncInputValue" data-key="name" value="{{product.name}}"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" bindtap="navToNorm">
+            <view class="weui-cell__hd">
+                <view class="weui-label">规格</view>
+            </view>
+            <view class="weui-cell__bd">
+                <view class="fake-picker {{product.normsValue ? '' :'empty'}}">
+                    {{product.normsValue}}
+                    <view class="navigator-arrow"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">商品价格</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">价格</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input type="digit" bindinput="syncInputValue" class="weui-input" placeholder="输入商品价格" data-key="price" value="{{product.price}}"/>
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">商品库存</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">库存</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input type="number" bindinput="syncInputValue" class="weui-input" placeholder="可不填，默认无限库存" data-key="stock" value="{{product.stock}}"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="save">确定</button>
+        </view>
+</view>

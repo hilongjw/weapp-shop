@@ -1,0 +1,30 @@
+<view class="dash-product-category">
+    <view class="cells-title">
+        规格分类
+    </view>
+    <view class="category-list">
+        <view 
+            class="category-item"
+            wx:for="{{ norms }}"
+            wx:key="{{index}}"
+            bindtap="touchItem"
+            data-index="{{index}}"
+        >
+            <view class="cell-text">
+                <view class="cell-text-title">
+                    {{item.title}}
+                </view>
+                <view class="cell-text-right">
+                    {{item.options.length}}
+                </view>
+            </view>
+            
+            <view class="navigator-arrow"></view>
+            <view class="cell-border"></view>
+        </view>
+        <view class="category-item-new" bindtap="navToAdd">
+            <image class="category-item-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg" ></image>
+            添加规格分类
+        </view>
+    </view>
+</view>

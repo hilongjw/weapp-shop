@@ -1,0 +1,33 @@
+<view class="shop-list">
+    <view class="shop-list-location">
+        <view class="shop-list-location-text" bindtap="navToLocation">
+            <image src="http://77wdm6.com1.z0.glb.clouddn.com/location_green.svg" class="shop-list-location-icon"></image>
+            {{currentLocation.address}}
+            <view class="navigator-arrow"></view>
+        </view>
+    </view>
+    <view class="weui-cells__title">买过的店</view>
+    <view class="lobby-list">
+
+        <view class="lobby-list-item" 
+        wx:for="{{ shopList }}"
+        wx:key="{{ item._id }}" 
+        data-id="{{ item._id }}" 
+        bindtap="navToShop">
+            <image class="lobby-list-item-cover" src="{{item.logo}}"></image>
+            <view class="lobby-list-item-detail">
+                <view class="lobby-list-item-title">
+                    {{item.name}}
+                </view>
+                <view class="lobby-list-item-row">
+                    <image src="http://77wdm6.com1.z0.glb.clouddn.com/free_green.svg" class="lobby-list-item-row-icon"></image> {{ item.dispathCost ? item.dispathCost + '元' : '免运费'}}
+                </view>
+                <view class="lobby-list-item-row">
+                    <image src="http://77wdm6.com1.z0.glb.clouddn.com/time_gray.svg" class="lobby-list-item-row-icon"></image> {{item.dispatchTimeStart + ' - ' + item.dispatchTimeEnd}}
+                </view>
+            </view>
+            <view class="navigator-arrow"></view>
+        </view>
+        
+    </view>
+</view>

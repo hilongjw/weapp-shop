@@ -1,0 +1,4 @@
+@import "../../common/index.wxss";
+.text-pre-title {
+    width:40rpx;
+}

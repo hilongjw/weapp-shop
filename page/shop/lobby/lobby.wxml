@@ -1,0 +1,249 @@
+<view>
+    <view class="shop-top-info">
+        <view class="shop-top-info-item">
+            <image  class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shopstate_white.svg"></image>
+            <text class="shop-top-info-text">营业中</text>
+        </view>
+        <view class="shop-top-info-item">
+            <image class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/time_gray.svg"></image>
+            <text class="shop-top-info-text">20元起送</text>
+        </view>
+        <view class="shop-top-info-item">
+            <image class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/freight.svg"></image>
+            <text class="shop-top-info-text">免运费</text>
+        </view>
+    </view>
+
+    <view class="shop-tab">
+        <view 
+            class="shop-tab-item" 
+            wx:for="{{ topTabNav }}" 
+            wx:for-index="tabIndex"
+            wx:key="{{tabIndex}}" 
+        >
+            <text 
+                class="shop-tab-item-text {{item.active ? 'active' : '' }}"
+                data-index="{{tabIndex}}"
+                bindtap="tapTopTabNav"
+            >{{ item.text }}</text>
+            <view wx:if="{{item.active}}" class="shop-tab-item-light"></view>
+        </view>
+    </view>
+    
+    <view class="shop-shop-view" wx:if="{{ viewShow === 'shop' }}">
+
+        <view class="shop-shop-view-cell">
+            <image class="shop-shop-view-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shop_phone.svg"></image>
+            <view>{{ shop.phone }}</view>
+            <view class="navigator-arrow"></view>
+            <view class="shop-shop-view-cell-border"></view>
+        </view>
+        <view class="shop-shop-view-cell">
+            <image class="shop-shop-view-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shop_location.svg"></image>
+            <view>{{ shop.addressDetail }}</view>
+            <view class="navigator-arrow"></view>
+        </view>
+
+        <view class="weui-cells__title">配送信息</view>
+        <view class="shop-shop-view-cell key-value">
+            <view class="shop-shop-view-cell-border"></view>
+            <view class="shop-shop-view-cell-title">配送时间</view>
+            <view class="shop-shop-view-cell-value">{{shop.dispatchTimeStart }} - {{shop.dispatchTimeEnd }}</view>
+        </view>
+        <view class="shop-shop-view-cell key-value">
+            <view class="shop-shop-view-cell-border"></view>
+            <view class="shop-shop-view-cell-title">起送金额</view>
+            <view class="shop-shop-view-cell-value">￥{{ shop.dispatchStartPrice }}</view>
+        </view>
+        <view class="shop-shop-view-cell key-value">
+            <view class="shop-shop-view-cell-border"></view>
+            <view class="shop-shop-view-cell-title">配送费用</view>
+            <view class="shop-shop-view-cell-value">￥{{ shop.dispatchCost }}</view>
+        </view>
+        <view class="shop-shop-view-cell key-value">
+            <view class="shop-shop-view-cell-border"></view>
+            <view class="shop-shop-view-cell-title">配送服务</view>
+            <view class="shop-shop-view-cell-value">{{ shop.dispatchType }}</view>
+        </view>
+
+    </view>
+
+    <view class="shop-list-view" wx:if="{{ viewShow === 'product' }}">
+        <scroll-view class="category-list" scroll-y="true">
+            <view
+                wx:for="{{categoryList}}"
+                wx:key="{{index}}"
+                class="category-list-item {{ item.active ? 'active' : ''  }}" 
+                data-index="{{index}}"
+                bindtap="tapCategory"
+            >{{item.name}}</view>
+        </scroll-view>
+
+        <!--product-list-->
+        <scroll-view class="product-list" scroll-y="true">
+            <view
+                wx:for="{{productList}}"
+                wx:key="{{item._id}}"
+                class="product-list-item {{ item.active ? 'active' : ''  }}" 
+            >
+                <image 
+                    bindtap="productDetail" 
+                    src="{{item.cover}}" 
+                    class="product-list-cover" 
+                    data-id="{{item._id}}"
+                ></image>
+                <view class="product-list-item-info">
+                    <view                          class="product-list-item-title" 
+                    bindtap="productDetail" 
+                
+                    data-id="{{item._id}}">{{item.name}}</view>
+                    <view class="product-list-item-action">
+                        <view class="product-list-item-price">￥{{item.price}}</view>
+                        <view 
+                         wx:if="{{ item.norms.length }}"                      class="product-list-item-norms"
+                         data-id="{{item._id}}"      bindtap="showProductNorms">
+                        选规格</view>
+                         <view class="product-list-item-count" wx:if="{{ !item.norms.length }}">
+                         <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_%20reduce.svg"
+data-id="{{item._id}}"
+wx:if="{{item.count > 0}}"
+bindtap="reduceProductCount"></image>
+                         <text 
+wx:if="{{item.count > 0}}"                         class="product-list-item-count-text">{{item.count}}</text>
+                          <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_add.svg"
+data-id="{{item._id}}"
+bindtap="addProductCount"></image>
+                         </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="shop-cart-tab">
+        <view class="shop-cart-logo" bindtap="toggleCartList">
+            <view wx:if="{{ cartCount }}" class="shop-cart-logo-badge">{{cartCount}}</view>
+            <image class="shop-cart-logo-img {{ cartCount ? '' : 'empty' }}" src="http://77wdm6.com1.z0.glb.clouddn.com/theshop_logo_large.svg"></image>
+        </view>
+        <view class="shop-cart-info">
+            <view class="shop-cart-detail">
+                <view class="shop-cart-price" wx:if="{{cartCount > 0}}">
+                    ￥{{cartPrice}}
+                </view>
+                <view class="shop-cart-dispatch {{ cartCount ? '' : 'empty' }}">
+                    配送费 ￥5
+                </view>
+            </view>
+             <view class="shop-cart-action">
+                <button wx:if="{{ cartCount > 0 }}" class="shop-cart-place" bindtap="navToPreOrder">去结算</button>
+                <view 
+                    wx:if="{{ cartCount === 0 }}"
+                    class="shop-cart-place-empty">0元起送</view>
+             </view>
+        </view>
+    </view>
+
+    <view class="product-pop" wx:if="{{productPop.show}}">
+        <view class="product-pop-title">
+            {{productPop.name}}
+        </view>
+        <image class="product-pop-cover" src="{{productPop.cover}}"></image>
+        <view class="product-pop-price">
+            ￥{{productPop.price}}
+        </view>
+        <view 
+            class="product-pop-btn"             
+            bindtap="addProductToCart"
+            data-id="{{productPop.id}}"
+        >
+            加入购物车
+        </view>
+    </view>
+    
+    <view class="product-norms-pop" wx:if="{{ productNormsPop.show}}">
+        <view class="product-norms-pop-bd">
+            <view 
+                class="product-norms-pop-row"
+                wx:for="{{productNormsPop.norms}}" 
+                wx:for-item="norm"
+                wx:key="{{normIndex}}"
+                wx:for-index="normIndex"
+            >
+                <view class="product-norms-pop-row-title">
+                {{ norm.title }}
+                </view>
+                <view class="product-norms-pop-row-list">
+                <view 
+                wx:for="{{norm.options}}" 
+                wx:for-item="tag"
+                wx:for-index="tagIndex"
+                wx:key="{{tagIndex}}"
+                bindtap="tapNormTag"
+                data-nindex="{{normIndex}}"
+                data-tindex="{{tagIndex}}"
+                class="product-norms-pop-row-tag {{ tag.active ? 'active' : '' }}">
+                    {{tag.text}}
+                </view>
+                </view>
+            </view>
+        </view>
+        <view class="product-norms-pop-ft">
+            <view class="product-norms-pop-price">
+                ￥{{ productNormsPop.total }}
+            </view>
+            <view class="product-norms-pop-count">
+                <view class="cart-pop-product-count">
+                    <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_%20reduce.svg"
+data-id="{{productNormsPop._id}}"
+wx:if="{{productNormsPop.count > 0}}"
+bindtap="reduceNormCount"></image>
+                         <text 
+wx:if="{{productNormsPop.count > 0}}"                         class="product-list-item-count-text">{{productNormsPop.count}}</text>
+                          <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_add.svg"
+data-id="{{productNormsPop._id}}"
+bindtap="addNormCount"></image>
+                    </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="cart-pop" wx:if="{{popCart}}">
+        <view class="cart-pop-hd">
+            <view class="cart-pop-hd-count">{{cartCount}}件商品</view>
+            <view>总价：
+            <text class="cart-pop-hd-price">￥{{cartPrice}}</text>
+            </view>
+        </view>
+        <view class="cart-pop-bd">
+            <scroll-view   
+                scroll-y="true"     
+                class="cart-pop-product-list"
+            >
+                <view 
+                    class="cart-pop-product" 
+                    wx:for="{{cartList}}"
+                    wx:key="{{index}}"
+                >
+                    <view class="cart-pop-product-name">{{item.name}}</view>
+                    <view class="cart-pop-product-price">
+                        ￥{{item.price}}
+                    </view>
+                    <view class="cart-pop-product-count">
+                    <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_%20reduce.svg"
+data-id="{{item._id}}"
+wx:if="{{item.count > 0}}"
+bindtap="reduceProductCount"></image>
+                         <text 
+wx:if="{{item.count > 0}}"                         class="product-list-item-count-text">{{item.count}}</text>
+                          <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_add.svg"
+data-id="{{item._id}}"
+bindtap="addProductCount"></image>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="cart-pop-ft" bindtap="toggleCartList">
+            取消
+        </view>
+    </view>
+    <view class="page-mask"bindtap="tapMask"  wx:if="{{popMask}}"></view>
+</view>

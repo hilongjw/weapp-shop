@@ -1,0 +1,20 @@
+@import "../../common/index.wxss";
+.imagebox {
+    display: flex;
+    padding: 30rpx;
+}
+.image-box-item {
+    width: 116rpx;
+    height: 116rpx;
+    margin-right: 20rpx;
+}
+.imagebox-add {
+    height: 56rpx;
+    width: 56rpx;
+    border: 1px solid #CCCCCC;
+    padding: 30rpx;
+}
+.imagebox-add-icon {
+    height: 56rpx;
+    width: 56rpx;
+}

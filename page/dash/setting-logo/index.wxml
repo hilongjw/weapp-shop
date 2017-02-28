@@ -1,0 +1,11 @@
+<view class="shop-logo-view">
+    <image src="{{shop.logo}}" class="shop-logo-preview"></image>
+    <view class="shop-logo-action">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="getImageFromCamera">拍照</button>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" bindtap="getImageFromAlbum">从手机相册选择</button>
+        </view>
+    </view>
+</view>

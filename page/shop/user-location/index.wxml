@@ -1,0 +1,28 @@
+<view class="user-location">
+    <view class="weui-cells__title">配送地址</view>
+    <view class="user-location-list">
+        <view 
+            class="user-location-item"
+            wx:for="{{ locationList }}"
+            wx:key="{{index}}"
+            data-index="{{index}}"
+            bindtap="chooseLocation"
+        >
+            <image 
+            class="user-location-selected"  src="http://77wdm6.com1.z0.glb.clouddn.com/selected.svg"
+            wx:if="{{item.active}}"
+            ></image>
+            <view class="user-location-val">
+                {{item.address + item.addressDetail}}
+            </view>
+            <view class="user-location-border"></view>
+            <image src="http://77wdm6.com1.z0.glb.clouddn.com/about.svg" class="user-location-about"></image>
+        </view>
+        <view class="user-location-add" bindtap="navToLocation">
+            <image class="user-location-add-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg"></image>
+            <view class="user-location-add-text">
+                新增收货地址
+            </view>
+        </view>
+    </view>
+</view>

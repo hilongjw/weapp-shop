@@ -1,0 +1,40 @@
+<import src="../../common/components/toptip/index.wxml"></import>
+
+<view class="page user-location-edit">
+    <view class="page__bd">
+        <template is="top-tip" data="{{ topTip }}"></template>
+        <view class="weui-cells weui-cells_after-title">
+
+            <view class="weui-cell weui-cell_input" bindtap="chooseLocation">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">选择地区</view>
+                </view>
+                <view class="weui-cell__bd location-text {{ form.address ? '' : 'empty' }}">
+                    {{ form.address ? form.address : '地区信息'}}
+                </view>
+                <view class="navigator-arrow"></view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-label">详细地址</view>
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="街道门牌信息" style="height: 3.3em" data-key="addressDetail" bindinput="syncInputValue" value="{{form.addressDetail}}"/>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">邮政编码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="" data-key="postCode" bindinput="syncInputValue" value="{{form.postCode}}"/>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="save">确定</button>
+        </view>
+    </view>
+</view>

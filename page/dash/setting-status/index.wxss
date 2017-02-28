@@ -1,0 +1,29 @@
+.common-page {
+    background: #EFEFF4;
+    padding-top: 31rpx;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+.dash-setting-status-item {
+    position: relative;
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #000000;
+    letter-spacing: 0;
+    padding: 20rpx 30rpx;
+    background: #fff;
+}
+.dash-setting-status-selected {
+    position: absolute;
+    top: 34rpx;
+    right: 30rpx;
+    width: 26rpx;
+    height: 18rpx;
+}
+.dash-setting-cell-border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 37rpx;
+    border-bottom: 1rpx solid #EFEFF4;
+}

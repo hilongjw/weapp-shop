@@ -1,0 +1,38 @@
+.dash-tab-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 11rpx 56rpx 0 56rpx;
+    box-sizing: border-box;
+    
+}
+.dash-tab-item {
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: 20rpx;
+    color: #7F8389;
+    letter-spacing: 0.3rpx;
+}
+.dash-tab-item.active {
+    color: #1AAE18;
+}
+.dash-tab-item-icon-container {
+    position: relative;
+}
+.dash-tab-item-badge {
+    position: absolute;
+    top: 0;
+    right: -24rpx;
+    background: #F12C20;
+    line-height: 10rpx;
+    color: #fff;
+    padding: 12rpx;
+    border-radius: 20rpx;
+}
+.dash-tab-item-icon {
+    height: 52rpx;
+    width: 49rpx;
+}

@@ -1,0 +1,13 @@
+<view class="order-state">
+    <view class="order-state-icon-container">
+        <image 
+        class="order-state-icon"   src="http://77wdm6.com1.z0.glb.clouddn.com/success.svg"></image>
+    </view>
+    <view class="order-state-title">
+        下单成功
+    </view>
+    <view class="order-state-content">
+        商家正在为您准备并配送商品
+    </view>
+    <button type="primary" bindtap="navToOrder">订单详情</button>
+</view>

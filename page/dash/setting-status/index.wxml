@@ -1,0 +1,16 @@
+<view class="common-page">
+    <view 
+        class="dash-setting-status-item"
+        wx:for="{{ statusList }}"
+        wx:key="{{index}}"
+        data-index="{{index}}"
+        bindtap="chooseItem"
+    >
+        {{item.value}}
+        <image 
+        class="dash-setting-status-selected" 
+            wx:if="{{item.active}}"
+            src="http://77wdm6.com1.z0.glb.clouddn.com/selected.svg"></image>
+            <view wx:if="{{ index !== (statusList.length - 1) }}" class="dash-setting-cell-border"></view>
+    </view>
+</view>

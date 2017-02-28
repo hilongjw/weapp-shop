@@ -1,0 +1,43 @@
+<view class="common-page">
+    <view class="dash-setting-cell dash-shop-logo-cell" bindtap="navToLogo">
+        <view class="key-value">
+            <view class="dash-setting-cell-title">店标</view>
+            <view class="dash-setting-cell-value">
+                <image class="dash-setting-logo" src="{{shop.logo}}"></image>
+            </view>
+        </view>
+        <view></view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+
+    <view class="dash-setting-cell" bindtap="navToName">
+        <view class="key-value">
+            <view class="dash-setting-cell-title">店铺名称</view>
+            <view class="dash-setting-cell-value">{{shop.name}}</view>
+        </view>
+        <view></view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToQR">
+        <view class="key-value">
+            <view class="dash-setting-cell-title">店铺二维码</view>
+            <view class="dash-setting-cell-value">
+                <image class="dash-setting-info-qrcode" src="http://77wdm6.com1.z0.glb.clouddn.com/qrcode.svg"></image>
+                </view>
+        </view>
+        <view></view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+    <view class="dash-setting-cell" bindtap="navToLocation">
+        <view class="key-value">
+            <view class="dash-setting-cell-title">店铺地址</view>
+            <view class="dash-setting-cell-value"></view>
+        </view>
+        <view></view>
+        <view class="navigator-arrow"></view>
+        <view class="dash-setting-cell-border"></view>
+    </view>
+</view>

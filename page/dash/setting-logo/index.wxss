@@ -1,0 +1,11 @@
+@import "../../common/index.wxss";
+.shop-logo-view {
+    min-height: 100%;
+    background: #4A4A4A;
+    padding-top: 88rpx;
+    box-sizing: border-box;
+}
+.shop-logo-preview {
+    width: 750rpx;
+    height: 750rpx;
+}

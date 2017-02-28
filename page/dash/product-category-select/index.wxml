@@ -1,0 +1,26 @@
+<view class="dash-product-category">
+    <view class="cells-title">
+        多选
+    </view>
+    <view class="category-list">
+        <view 
+            class="category-item {{item.drag.dragging ? 'mainmove' : ''}}"
+            wx:for="{{ categoryList }}"
+            wx:key="{{index}}"
+            disable-scroll="true"
+            bindtap="touchItem"
+            data-index="{{index}}"
+        >
+            <view class="category-item-text">
+                <image wx:if="{{ item.selected }}" class="category-item-select" src="http://77wdm6.com1.z0.glb.clouddn.com/seleted.svg"></image>
+                <image wx:if="{{ !item.selected }}" class="category-item-select" src="http://77wdm6.com1.z0.glb.clouddn.com/un_selected.svg"></image>
+                {{item.name}}
+            </view>
+            <view class="cell-border"></view>
+        </view>
+        <view class="category-item-new" bindtap="navToAdd">
+            <image class="category-item-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg" ></image>
+            添加分类
+        </view>
+    </view>
+</view>

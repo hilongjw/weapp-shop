@@ -1,0 +1,22 @@
+<template name="dash-tab">
+    <view class="dash-tab-bar">
+
+        <view 
+        class="dash-tab-item {{ item.active ? 'active' : '' }}" 
+        wx:for="{{dashTab}}"
+        wx:key="{{index}}"
+        data-index="{{ index }}"
+        bindtap="touchTabBar"
+        >
+            <view class="dash-tab-item-icon-container" >
+                <view wx:if="{{ item.badge }}" class="dash-tab-item-badge">
+                    {{item.badge}}
+                </view>
+                <image wx:if="{{!item.active}}" class="dash-tab-item-icon" src="{{item.icon}}"></image>
+                <image wx:if="{{item.active}}" class="dash-tab-item-icon" src="{{item.iconActive}}"></image>
+            </view>
+            <view>{{item.text}}</view>
+        </view>
+
+    </view>
+</template>

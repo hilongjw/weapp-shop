@@ -1,0 +1,57 @@
+<view class="page pre-order-view">
+    <view class="weui-cells__title">配送地址</view>
+    <view class="pre-order-location" bindtap="navToLocation">
+        {{form.location.address + form.location.addressDetail}}
+        <view class="navigator-arrow"></view>
+    </view>
+
+    <view class="weui-cells__title">配送时间</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" bindchange="bindPickerChange" value="{{form.dispatchTime}}">
+              <view class="weui-input">{{form.dispatchTime}}</view>
+            </picker>
+          </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">订单备注</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="如：带包红塔山" style="height: 3.3em" bindinput="syncInputValue" data-key="remark" />
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">商品清单</view>
+    <view class="pre-order-product-list">
+        <view 
+            class="pre-order-product" 
+            wx:for="{{productList}}"
+            wx:key="{{index}}"
+        >
+            <view class="pre-order-product-name">
+                {{item.name}}
+            </view>
+            <view class="pre-order-product-count">
+                ×{{item.count}}
+            </view>
+            <view class="pre-order-product-price">
+                ￥{{item.price * item.count}}
+            </view>
+        </view>
+    </view>
+    <view class="pre-order-bar">
+        <view class="pre-order-bar-total">
+            <view>应付 </view>
+            <view class="pre-order-bar-price">
+                ￥{{ form.total }}
+            </view>
+        </view>
+        <button class="pre-order-bar-submit" bindtap="submitOrder">下单</button>
+    </view>
+</view>

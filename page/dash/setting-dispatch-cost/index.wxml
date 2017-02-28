@@ -1,0 +1,22 @@
+<import src="../../common/components/toptip/index.wxml"></import>
+
+<view class="common-page">
+    <view class="page__bd">
+        <template is="top-tip" data="{{ topTip }}"></template>
+        <view class="weui-cells__title">直接输入数字即可</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd text-pre-title">
+                    <view class="weui-label">￥</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="" bindinput="syncInputValue" value="{{cost}}"/>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="confirm">确定</button>
+        </view>
+    </view>
+</view>

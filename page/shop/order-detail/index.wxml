@@ -1,0 +1,63 @@
+<view class="shop-order-detail-view">
+    <view class="shop-order-detail">
+        <view class="shop-order-detail-hd">
+            <view class="shop-order-detail-hd-pre">
+                应付金额
+            </view>
+            <view class="shop-order-detail-hd-price">
+                ¥{{ order.total }}
+            </view>
+            <view class="shop-order-detail-hd-border"></view>
+        </view>
+        <view class="shop-order-detail-bd">
+            <view class="shop-order-detail-bd-row">
+                <view class="shop-order-detail-bd-key">
+                    商      品
+                </view>
+                <view class="shop-order-detail-bd-val">
+                    <view   class="shop-order-detail-bd-val-row" 
+                    wx:for="{{ order.detail }}"
+                    wx:key="{{index}}">
+                        {{item.name}}  ×{{item.count}}  ￥{{item.price}}
+                    </view>
+                </view>
+            </view>
+            <view class="shop-order-detail-bd-row">
+                <view class="shop-order-detail-bd-key">
+                    商户名称
+                </view>
+                <view class="shop-order-detail-bd-val">
+                    {{ order.shop.name }}
+                </view>
+            </view>
+            <view class="shop-order-detail-bd-row">
+                <view class="shop-order-detail-bd-key">
+                    当前状态
+                </view>
+                <view class="shop-order-detail-bd-val">
+                    {{ order.statusText }}
+                </view>
+            </view>
+            <view class="shop-order-detail-bd-row">
+                <view class="shop-order-detail-bd-key">
+                    交易时间
+                </view>
+                <view class="shop-order-detail-bd-val">
+                    {{ order.createdAt }}
+                </view>
+            </view>
+            <view class="shop-order-detail-bd-row">
+                <view class="shop-order-detail-bd-key">
+                    支付方式
+                </view>
+                <view class="shop-order-detail-bd-val">
+                    {{ order.payTypeText }}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" >呼叫商家</button>
+        <button class="weui-btn" >取消订单</button>
+    </view>
+</view>

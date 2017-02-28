@@ -1,0 +1,97 @@
+@import "../../common/components/dash-tab/index.wxss";
+.dash-order-view {
+    background: #EFEFF4;
+    height: 100%;
+    padding-bottom: 100rpx;
+    box-sizing: border-box;
+}
+.shop-tab {
+    height: 94rpx;
+    display: flex;
+    justify-content: space-around;
+    background: #FFFFFF;
+    box-shadow: inset 0 -1px 0 0 #E5E5E5;
+}
+.shop-tab-item {
+    position: relative;
+    padding: 26rpx;
+}
+.shop-tab-item-text {
+    opacity: 0.9;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #353535;
+    letter-spacing: 0;
+}
+.shop-tab-item-text.active {
+    color: #1AAE18;
+}
+.shop-tab-item-light {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -85rpx;
+    height: 2px;
+    width: 170rpx;
+    background: #1AAD19;
+}
+
+.dash-order-list {
+    height: 100%;
+}
+.dash-order-item{
+    background: #FFFFFF;
+    border: 1rpx solid #CACACA;
+    border-radius: 10rpx;
+    margin: 30rpx 35rpx;
+}
+.dash-order-item-hd {
+    font-family: PingFangSC-Regular;
+    font-size: 48rpx;
+    color: #1AAE18;
+    letter-spacing: 0;
+    line-height: 42rpx;
+    padding: 28rpx 21rpx;
+    border-bottom: 1px solid #E5E5E5;
+}
+.dash-order-item-bd {
+    padding: 31rpx 21rpx;
+}
+.dash-order-item-address {
+    margin-top: 31rpx;
+    margin-bottom: 31rpx;
+}
+.dash-order-item-dp-info {
+    display: flex;
+    font-family: PingFangSC-Regular;
+    font-size: 48rpx;
+    color: #00000C;
+    letter-spacing: 0;
+    line-height: 67rpx;
+    margin-bottom: 30rpx;
+}
+.dash-order-item-dp-phone {
+    color: #1AAE18;
+    margin-left: 50rpx;
+}
+.dash-order-item-row {
+    display: flex;
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #000;
+    letter-spacing: 0;
+    margin-bottom: 30rpx;
+}
+.dash-order-item-row-title {
+    color: #999999;
+}
+.dash-order-item-ft {
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #000000;
+    letter-spacing: 2.67rpx;
+    line-height: 42rpx;
+    border-top: 1px solid #E5E5E5;
+    padding: 20rpx 24rpx;
+}

@@ -1,0 +1,24 @@
+<view class="dash-product-category">
+    <view class="cells-title">
+        多选
+    </view>
+    <view class="category-list">
+        <view 
+            class="category-item"
+            wx:for="{{ norm.options }}"
+            wx:key="{{index}}"
+            disable-scroll="true"
+            bindtap="touchItem"
+            data-index="{{index}}"
+        >
+            <view class="category-item-text">
+                <input class="weui-input" placeholder="输入规格详情名称" bindblur="syncInputValue" data-index="{{index}}" value="{{item.text}}"/>
+            </view>
+            <view class="cell-border"></view>
+        </view>
+        <view class="category-item-new" bindtap="addOption">
+            <image class="category-item-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg" ></image>
+            添加规格详情
+        </view>
+    </view>
+</view>

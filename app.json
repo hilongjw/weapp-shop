@@ -1,0 +1,106 @@
+{
+  "pages": [
+    
+    "page/dash/order-new/index",
+    "page/dash/order-detail/index",
+    
+    "page/dash/order/index",
+    
+    "page/shop/order-list/index",
+    "page/shop/lobby/lobby",
+    "page/shop/user/index",
+    "page/shop/user-location-edit/index",
+    
+    
+    
+    "page/component/index",
+    "page/dash/product/index",
+
+    "page/dash/setting/setting",
+    "page/dash/product-add/index",
+    "page/dash/product-norms-add/index",
+    "page/dash/product-norms/index",
+
+    
+    "page/dash/product-norms-detail/index",
+    
+    "page/dash/product-category/index",
+    "page/dash/product-category-add/index",
+    
+    "page/dash/product-category-select/index",
+
+    
+    
+    "page/shop/order-detail/index",
+    
+
+   
+    
+
+    "page/dash/setting-status/index",
+
+    "page/dash/setting-info/index",
+    "page/dash/setting-location/index",
+    "page/dash/setting-qr/index",
+    "page/dash/setting-name/index",
+    "page/dash/setting-logo/index",
+
+    "page/dash/setting-dispatch-time/index",
+    "page/dash/setting-dispatch-cost/index", 
+    "page/dash/setting-dispatch-start/index", 
+    "page/dash/setting-phone/index",
+    
+
+    
+
+    "page/shop/order-state/index",
+    
+    "page/shop/pre-order/index", 
+    
+    "page/shop/user-location/index",
+
+   
+    
+    "page/shop/list/list",
+    
+    "page/dash/verify/verify",
+    "page/dash/init/init",
+    "page/dash/register/register"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "演示",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "page/shop/list/list",
+      "iconPath": "image/shop.png",
+      "selectedIconPath": "image/shop_light.png",
+      "text": "店铺"
+    }, {
+      "pagePath": "page/shop/order-list/index",
+      "iconPath": "image/order.png",
+      "selectedIconPath": "image/order_light.png",
+      "text": "订单"
+    }, {
+      "pagePath": "page/shop/user/index",
+      "iconPath": "image/me.png",
+      "selectedIconPath": "image/me_light.png",
+      "text": "我"
+    }]
+    
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

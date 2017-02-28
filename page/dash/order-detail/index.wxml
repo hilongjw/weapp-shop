@@ -1,0 +1,112 @@
+<view class="dash-order-detail">
+    <view class="cells-title">
+        配送信息
+        <view class="cells-title-light">
+            {{ distance ? '距离 ' + distance + '米': '' }}
+        </view>
+    </view>
+
+    <view class="ts-cells">
+
+        <view class="ts-cell">
+            {{order.address.address + order.address.addressDetail}}
+            <view class="dash-setting-cell-border"></view>
+        </view>
+
+        <view class="ts-cell arrow" bindtap="callPhone"
+        data-phone="{{order.address.phone}}">
+            <view class="ts-cell-title">
+                {{order.address.name}}
+            </view>
+            <view class="ts-cell-val light">
+                {{order.address.phone}}
+            </view>
+            <view class="navigator-arrow"></view>
+            <view class="dash-setting-cell-border"></view>
+        </view>
+
+        <view class="ts-cell">
+            <view class="ts-cell-title">
+                配送时间
+            </view>
+            <view class="ts-cell-val light">
+                {{order.dispatchAtText}}
+            </view>
+            <view class="dash-setting-cell-border"></view>
+        </view>
+
+        <view class="ts-cell">
+            <view class="ts-cell-title">
+                备注信息
+            </view>
+            <view class="ts-cell-val light">
+                {{order.mark}}
+            </view>
+            <view class="dash-setting-cell-border"></view>
+        </view>
+        <view class="ts-cell">
+            <view class="ts-cell-title">
+                下单时间
+            </view>
+            <view class="ts-cell-val">
+                2017年2月11日 12:23
+            </view>
+        </view>
+
+    </view>
+
+    <view class="cells-title">
+        订单信息
+    </view>
+
+    <view class="ts-cells">
+
+        <view class="ts-cells-price">
+            <view class="ts-cells-price-title">
+                应付金额
+            </view>
+             <view class="ts-cells-price-val">
+                ¥{{order.total}}
+            </view>
+            <view class="dash-setting-cell-border"></view>
+        </view>
+
+        <view class="ts-cells-product">
+           <view class="ts-cells-product-hd">
+                <view class="ts-cells-product-hd-title">
+                    商品
+                </view>
+                <view class="ts-cells-product-hd-count">
+                    数量
+                </view>
+                <view class="ts-cells-product-hd-price">
+                    单价
+                </view>
+           </view>
+           <view class="ts-cells-product-bd">
+                <view
+                    class="ts-cells-product-item"
+                    wx:for="{{order.detail}}"
+                    wx:key="{{index}}"
+                >
+                    <view class="ts-cells-product-item-title">
+                        {{item.name}}
+                    </view>
+                    <view class="ts-cells-product-item-count">
+                        ×{{item.count}}
+                    </view>
+                    <view class="ts-cells-product-item-price">
+                        ￥{{item.price}}
+                    </view>
+                </view>
+           </view>
+        </view>
+
+    </view>
+
+    <view class="dash-order-detail-action" wx:if="{{ order.status === 'wait' }}">
+        <button class="dash-order-detail-action-btn" type="warn" plain="true" bindtap="cancelOrder"> 拒绝 </button>
+        <button class="dash-order-detail-action-btn" type="primary" bindtap="confirmOrder"> 接单 </button>
+    </view>
+    
+</view>

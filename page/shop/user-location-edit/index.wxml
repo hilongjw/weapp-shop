@@ -1,0 +1,50 @@
+<import src="../../common/components/toptip/index.wxml"></import>
+
+<view class="page user-location-edit">
+    <view class="page__bd">
+        <template is="top-tip" data="{{ topTip }}"></template>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">收货人</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="姓名" data-key="name" bindinput="syncInputValue" value="{{form.name}}"/>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">联系电话</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input  type="number" class="weui-input" placeholder="手机或固话" data-key="phone" bindinput="syncInputValue" value="{{form.phone}}"/>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">选择地区</view>
+                </view>
+                <view class="weui-cell__bd" bindtap="testLocation" >
+                    <view class="location-text {{ form.address ? '' :'empty' }}">
+                        {{form.address ? form.address : '地区信息'}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-label">详细地址</view>
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="街道门牌信息" style="height: 3.3em" data-key="addressDetail" bindinput="syncInputValue" value="{{form.addressDetail}}"/>
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="confirm">确定</button>
+        </view>
+    </view>
+</view>

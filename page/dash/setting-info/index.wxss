@@ -1,0 +1,89 @@
+@import "../../common/index.wxss";
+
+.dash-setting-view {
+    background: #EFEFF4;
+    min-height: 100%;
+    padding-top: 30rpx;
+}
+.dash-setting-info {
+    position: relative;
+    background: #fff;
+    padding: 24rpx 30rpx;
+    display: flex;
+}
+.dash-setting-logo {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 6rpx;
+    margin-right: 25rpx;
+}
+.dash-setting-info-name {
+    font-family: PingFangSC-Regular;
+    font-size: 36rpx;
+    line-height: 50rpx;
+    color: #000000;
+    letter-spacing: 0;
+    margin-top: 10rpx;
+    margin-bottom: 12rpx;
+}
+.dash-setting-info-address {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #9B9B9B;
+    line-height: 37rpx;
+}
+
+.dash-setting-cell {
+    position: relative;
+    background: #fff;
+    padding: 22rpx 90rpx 22rpx 37rpx;
+    display: flex;
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #000000;
+    letter-spacing: 0;
+}
+.dash-shop-logo-cell {
+    padding: 64rpx;
+}
+.dash-setting-logo {
+    position: absolute;
+    top: -40rpx;
+    right: 0;
+}
+.dash-setting-info-qrcode {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    top: 50%;
+    right: 0rpx;
+    margin-top: -20rpx;
+}
+.dash-setting-cell.help {
+    margin-top: 40rpx;
+}
+.dash-setting-cell-icon {
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 30rpx;
+}
+.dash-setting-cell-border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 37rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+}
+.dash-setting-cell .key-value {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.dash-setting-cell-value {
+    position: relative;
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #888888;
+    letter-spacing: 0;
+    margin-right: 20rpx;
+}

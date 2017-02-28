@@ -1,0 +1,6 @@
+<template name="top-tip">
+    <view 
+        class="weui-toptips weui-toptips_warn" 
+        wx:if="{{topTip.show}}"
+    >{{topTip.msg}}</view>
+</template>

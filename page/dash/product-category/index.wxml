@@ -1,0 +1,27 @@
+<view class="dash-product-category">
+    <view class="cells-title">
+        分类列表，长按某个分类上下拖动，可调整分类顺序
+    </view>
+    <view class="category-list">
+        <view 
+            class="category-item {{item.drag.dragging ? 'mainmove' : ''}}"
+            wx:for="{{ categoryList }}"
+            wx:key="{{index}}"
+            disable-scroll="true"
+            data-id="{{item._id}}"
+            bindtap="navToEdit"
+            style="transform: translate({{item.drag.x}}px, {{item.drag.y}}px )"
+        >
+            {{item.name}}
+            <image 
+            data-index="{{index}}"
+            bindtouchmove="dragMoving"                         bindtouchstart="dragStart"                         bindtouchend="dragEnd"  
+            class="category-item-icon"  src="http://77wdm6.com1.z0.glb.clouddn.com/drag.svg"></image>
+            <view class="cell-border"></view>
+        </view>
+        <view class="category-item-new" bindtap="navToAdd">
+            <image class="category-item-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg" ></image>
+            添加分类
+        </view>
+    </view>
+</view>

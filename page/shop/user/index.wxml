@@ -1,0 +1,28 @@
+<view class="user-view">
+    <view class="user-profile">
+        <image class="user-profile-avatar"
+src="{{user.avatar}}"></image>
+    <view class="user-profile-name">
+        {{user.username}}
+    </view>
+    </view>
+
+    <view class="weui-cells__title">配送地址</view>
+
+    <view class="user-location-list">
+        <view class="user-location-item" 
+        wx:for="{{ locationList }}"
+         wx:key="{{ index }}"
+         data-id="{{ item._id }}"
+         bindtap="navToLocation
+        >
+            {{ item.address + item.addressDetail }}
+            <view class="navigator-arrow"></view>
+        </view>
+        
+        <view class="user-location-add" bindtap="navToLocation">
+            <image class="user-location-add-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg"></image>
+            <view>新增收货地址</view>
+        </view>
+    </view>
+</view>

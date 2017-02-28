@@ -1,0 +1,53 @@
+@import "../../common/index.wxss";
+.user-location {
+    padding-top: 30rpx;
+    background: #EFEFF4;
+    min-height: 100%;
+}
+.user-location-list {
+    background: #fff;
+}
+.user-location-item {
+    position: relative;
+    padding: 31rpx 86rpx 31rpx 110rpx;
+}
+.user-location-selected {
+    position: absolute;
+    left: 30rpx;
+    top: 50%;
+    width: 30rpx;
+    height: 18rpx;
+    margin-top: -15rpx;
+}
+.user-location-about {
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    width: 32rpx;
+    height: 32rpx;
+    margin-top: -16rpx;
+}
+.user-location-border {
+    position: absolute;
+    bottom: 0;
+    left: 30rpx;
+    width: 100%;
+    border-bottom: 1rpx solid #EFEFF4;
+}
+.user-location-add {
+    padding: 37rpx 30rpx;
+    background: #fff;
+    display: flex;
+}
+.user-location-add-icon {
+    height: 36rpx;
+    width: 36rpx;
+    margin-right: 30rpx;
+    vertical-align: sub;
+}
+.user-location-add-text {
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #000000;
+    letter-spacing: 0;
+}

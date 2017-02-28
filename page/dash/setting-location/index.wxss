@@ -1,0 +1,18 @@
+@import "../../common/index.wxss";
+.user-location-edit {
+    background: #EFEFF4;
+    padding-top: 30rpx;
+}
+.weui-cell {
+    position: relative;
+}
+.location-text {
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #000;
+    letter-spacing: 0;
+    padding: 20rpx 80rpx 20rpx 0;
+}
+.location-text.empty {
+    opacity: 0.6;
+}

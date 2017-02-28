@@ -1,0 +1,59 @@
+@import "../../common/index.wxss";
+.shop-list {
+    background: #EFEFF4;
+    height: 100%;
+}
+.shop-list-location {
+    position: relative;
+    background: #FFFFFF;
+    padding: 24rpx 0;
+}
+.shop-list-location .navigator-arrow {
+    position: absolute;
+    top: 50%;
+    right: 30rpx;
+    margin-top: -2rpx;
+}
+.shop-list-location-icon {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+.shop-list-location-text {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #1AAE18;
+    margin: 0 15rpx;
+}
+.lobby-list-item {
+    position: relative;
+    display: flex;
+    background: #fff;
+    padding: 24rpx 30rpx;
+    border-bottom: 1rpx solid #E5E5E5;
+}
+.lobby-list-item .navigator-arrow {
+    position: absolute;
+    top: 50%;
+    right: 30rpx;
+    margin-top: -2rpx;
+}
+.lobby-list-item-cover {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 4rpx;
+}
+.lobby-list-item-detail {
+    margin-left: 25rpx;
+}
+.lobby-list-item-row {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #9B9B9B;
+}
+.lobby-list-item-row-icon {
+    height: 26rpx;
+    width: 26rpx;
+    margin-right: 11rpx;
+    vertical-align: baseline;
+}

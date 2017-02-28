@@ -1,0 +1,40 @@
+<view class="index container">
+  <view class="index-hd">
+      <image class="index_logo" src="http://77wdm6.com1.z0.glb.clouddn.com/theshop_logo_large.svg"></image>
+    <view class="index-title">欢迎使用</view>
+    <view class="index-desc">只需几步，将您的实体店轻松搬到微信中，增加外卖收入。</view>
+  </view>
+  <view class="index-ac">
+    <button type="primary" bindtap="navToInit">创建店铺</button>
+    <button>查看演示</button>
+  </view>
+  <view class="index-ft">
+      <view class="flex-wrp">
+      <view class="foot-title">这个店</view>
+      <view class="foot-link">zhegedian.com</view>
+    </view>
+  </view>
+
+  <view class="index-bd">
+    <view class="kind-list">
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <image class="kind-list-img" src="resources/kind/{{item.id}}.png"></image>
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+                <navigator url="pages/{{page}}/{{page}}" class="navigator">
+                  <view class="navigator-text">{{page}}</view>
+                  <view class="navigator-arrow"></view>
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

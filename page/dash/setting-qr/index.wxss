@@ -1,0 +1,9 @@
+.dash-setting-qr-view {
+    background: #4A4A4A;
+    min-height: 100%;
+    padding-top: 88rpx;
+    box-sizing: border-box;
+}
+.dash-setting-qr-action {
+    padding: 60rpx 40rpx 0 40rpx;
+}
