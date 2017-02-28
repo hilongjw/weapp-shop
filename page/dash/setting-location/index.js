@@ -77,6 +77,15 @@ let page = {
         form.longitude = res.longitude
         form.geoHash = hash
         form['address'] = res.address + res.name
+
+        let shop = userData.get('shop') || {}
+
+        shop.geoHash = form.geoHash
+        shop.addressDetail = form.addressDetail
+        shop.address = form.address
+
+        userData.set('shop', shop)
+
         this.setData({
             form: form
         })

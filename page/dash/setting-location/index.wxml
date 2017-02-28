@@ -27,7 +27,7 @@
                      <view class="weui-label">邮政编码</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="" data-key="postCode" bindinput="syncInputValue" value="{{form.postCode}}"/>
+                    <input type="number" class="weui-input" placeholder="" data-key="postCode" bindinput="syncInputValue" value="{{form.postCode}}"/>
                 </view>
             </view>
 
