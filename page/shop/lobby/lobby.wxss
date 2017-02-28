@@ -12,6 +12,9 @@
     width: 750rpx;
     height: 100%;
 }
+.shop-view.unopen .product-list-item-action {
+    opacity: 0.5
+}
 .shop-top-info {
     display: flex;
     justify-content: space-around;

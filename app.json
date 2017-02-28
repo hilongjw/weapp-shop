@@ -1,6 +1,7 @@
 {
   "pages": [
-    
+    "page/shop/user/index",
+    "page/dash/product/index",
     "page/dash/order-new/index",
     "page/dash/order-detail/index",
     
@@ -8,13 +9,13 @@
     
     "page/shop/order-list/index",
     "page/shop/lobby/lobby",
-    "page/shop/user/index",
+    
     "page/shop/user-location-edit/index",
     
     
     
     "page/component/index",
-    "page/dash/product/index",
+    
 
     "page/dash/setting/setting",
     "page/dash/product-add/index",

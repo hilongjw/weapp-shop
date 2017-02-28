@@ -57,7 +57,8 @@
         </view>
     </view>
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" >呼叫商家</button>
-        <button class="weui-btn" >取消订单</button>
+        <button class="weui-btn" bindtap="callShop" type="primary" >呼叫商家</button>
+        <button class="weui-btn" bindtap="cancelOrderAction"  wx:if="{{order.status === 'wait' || order.status === 'sending' }}" >取消订单</button>
+        <button class="weui-btn" bindtap="navToShop" wx:if="{{order.status === 'done'}}" >再来订单</button>
     </view>
 </view>

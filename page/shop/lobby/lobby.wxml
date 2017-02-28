@@ -1,16 +1,18 @@
-<view>
+<view class="shop-view {{ shop.status !== 'open' ? 'unopen' : '' }}">
     <view class="shop-top-info">
         <view class="shop-top-info-item">
             <image  class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shopstate_white.svg"></image>
-            <text class="shop-top-info-text">营业中</text>
+            <text class="shop-top-info-text">{{shop.statusText}}</text>
         </view>
         <view class="shop-top-info-item">
             <image class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/time_gray.svg"></image>
-            <text class="shop-top-info-text">20元起送</text>
+            <text class="shop-top-info-text">{{shop.dispatchStartPrice}}元起送</text>
         </view>
         <view class="shop-top-info-item">
             <image class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/freight.svg"></image>
-            <text class="shop-top-info-text">免运费</text>
+            <text class="shop-top-info-text">{{
+                shop.dispatchCost ? shop.dispatchCost + '元运费' : '免运费'
+            }}</text>
         </view>
     </view>
 
@@ -63,7 +65,7 @@
         <view class="shop-shop-view-cell key-value">
             <view class="shop-shop-view-cell-border"></view>
             <view class="shop-shop-view-cell-title">配送服务</view>
-            <view class="shop-shop-view-cell-value">{{ shop.dispatchType }}</view>
+            <view class="shop-shop-view-cell-value">{{ shop.dispatchTypeText }}</view>
         </view>
 
     </view>

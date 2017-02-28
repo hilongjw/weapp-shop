@@ -90,6 +90,11 @@ let page = {
     .then(res => {
       const list = userData.get('locationList') || []
       list.push(res.data)
+      wx.showToast({
+        title: '保存成功',
+        icon: 'success',
+        duration: 2000
+      })
       wx.navigateBack()
     })
   },

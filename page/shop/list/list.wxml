@@ -2,7 +2,7 @@
     <view class="shop-list-location">
         <view class="shop-list-location-text" bindtap="navToLocation">
             <image src="http://77wdm6.com1.z0.glb.clouddn.com/location_green.svg" class="shop-list-location-icon"></image>
-            {{currentLocation.address}}
+            {{currentLocation.address ? currentLocation.address : '选择地址'}}
             <view class="navigator-arrow"></view>
         </view>
     </view>

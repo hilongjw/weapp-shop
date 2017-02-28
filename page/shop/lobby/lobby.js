@@ -139,6 +139,7 @@ Page({
 
     },
     addProductCount (e) {
+        if (this.data.shop.status !== 'open') return
         const product = this.getProductById(e)
         if (!product.count) product.count = 0
         product.count++
@@ -232,6 +233,7 @@ Page({
         })
     },
     showProductNorms (e) {
+        if (this.data.shop.status !== 'open') return
         const product = this.getProductById(e)
         this.setData({
             popMask: true,
@@ -270,7 +272,6 @@ Page({
         this.setData({
             productNormsPop: productNormsPop
         })
-        console.log(productNormsPop)
         this.addProductCount(e)
     },
     reduceNormCount (e) {
@@ -291,16 +292,7 @@ Page({
         console.log(this.data.cartList)
 
         wx.navigateTo({
-            url:'/page/shop/pre-order/index',
-          success: function(res){
-            // success
-          },
-          fail: function() {
-            // fail
-          },
-          complete: function() {
-            // complete
-          }
+            url:'/page/shop/pre-order/index'
         })
     }
 })

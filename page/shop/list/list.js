@@ -37,10 +37,27 @@ Page({
       })
     })
   },
+  nearByShop (hash) {
+    Cov({
+      url: '/api/shop',
+      data: {
+        geoHash: hash
+      }
+    })
+    .then(res => {
+      let shopList = this.data.shopList
+      shopList = shopList.concat(res.data)
+      this.setData({
+        shopList: shopList
+      })
+    })
+  },
   navToLocation () {
     wx.chooseLocation({
       success: (res) => {
         const hash = geoHash.encode(res.latitude, res.longitude)
+        console.log(hash)
+        this.nearByShop(hash.substr(0,6))
         this.setData({
             currentLocation: {
               latitude: res.latitude,

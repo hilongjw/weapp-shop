@@ -65,12 +65,6 @@ let app = {
     })
     .then(res => {
       let shop = res.data
-      const statusMap = {
-        open: '营业中',
-        closed: '已休息',
-        stoped: '已停业'
-      }
-      shop.statusText = statusMap[shop.status]
       this.setData({
         shop: shop
       })
