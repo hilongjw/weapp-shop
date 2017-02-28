@@ -34,7 +34,7 @@
     
     <view class="shop-shop-view" wx:if="{{ viewShow === 'shop' }}">
 
-        <view class="shop-shop-view-cell">
+        <view class="shop-shop-view-cell" bindtap="callShop">
             <image class="shop-shop-view-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shop_phone.svg"></image>
             <view>{{ shop.phone }}</view>
             <view class="navigator-arrow"></view>

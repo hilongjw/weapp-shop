@@ -55,6 +55,18 @@ Page({
         categoryList: [],
         productList: []
     },
+    onShareAppMessage: function () {
+        return {
+            title: this.data.shop.name + ' - 这个店',
+            path: '/page/shop/lobby/lobby?id=' + this.data.shop._id
+        }
+    },
+    callShop () {
+        if (!this.data.shop || !this.data.shop.phone) return
+        wx.makePhoneCall({
+        phoneNumber: this.data.shop.phone
+        })
+    },
     init (shopId) {
         wx.showToast({
             icon: 'loading'

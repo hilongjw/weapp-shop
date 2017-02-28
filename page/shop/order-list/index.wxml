@@ -1,47 +1,54 @@
 <view class="order-list-view">
-    <view class="order-list-item" 
-    wx:for="{{ orderList }}"
-    wx:key="{{ item._id }}"
+    <scroll-view 
+        scroll-y="true" 
+        class="order-list"
+        lower-threshold="50"
+        bindscrolltolower="loadMore"
     >
-        <view class="order-list-item-hd" data-id="{{ item.shop._id }}"
-    bindtap="navToShop">
-            <image 
-            class="order-list-item-logo" 
-src="{{item.shop.logo}}"></image>
-            <view class="order-list-item-title">
-                {{item.shop.name}}
+        <view class="order-list-item" 
+        wx:for="{{ orderList }}"
+        wx:key="{{ item._id }}"
+        >
+            <view class="order-list-item-hd" data-id="{{ item.shop._id }}"
+        bindtap="navToShop">
+                <image 
+                class="order-list-item-logo" 
+    src="{{item.shop.logo}}"></image>
+                <view class="order-list-item-title">
+                    {{item.shop.name}}
+                </view>
+            </view>
+            <view class="order-list-item-bd">
+                <view class="order-list-item-bd-title">
+                    订单信息
+                </view>
+                <view class="order-list-item-bd-desc">
+                    1月25日
+                </view>
+                <view class="order-list-item-bd-row">
+                    <view class="order-list-item-bd-row-title">
+                    商品信息：
+                    </view>
+                    <view>{{item.detail[0].name}}等{{ item.detail.length }}件商品</view>
+                </view>
+                <view class="order-list-item-bd-row">
+                    <view class="order-list-item-bd-row-title">
+                    订单价格：
+                    </view>
+                    <view>{{ item.total }}元</view>
+                </view>
+                <view class="order-list-item-bd-row">
+                    <view class="order-list-item-bd-row-title">
+                    配送信息：
+                    </view>
+                    <view>{{ item.dispatchCost ? item.dispatchCost + '元'  : '免运费' }}</view>
+                </view>
+            </view>
+            <view class="order-list-item-ft"        data-id="{{ item._id }}"
+        bindtap="navToDetail">
+                查看详情
+                <view class="navigator-arrow"></view>
             </view>
         </view>
-        <view class="order-list-item-bd">
-            <view class="order-list-item-bd-title">
-                订单信息
-            </view>
-            <view class="order-list-item-bd-desc">
-                1月25日
-            </view>
-            <view class="order-list-item-bd-row">
-                <view class="order-list-item-bd-row-title">
-                商品信息：
-                </view>
-                <view>{{item.detail[0].name}}等{{ item.detail.length }}件商品</view>
-            </view>
-            <view class="order-list-item-bd-row">
-                <view class="order-list-item-bd-row-title">
-                订单价格：
-                </view>
-                <view>{{ item.total }}元</view>
-            </view>
-            <view class="order-list-item-bd-row">
-                <view class="order-list-item-bd-row-title">
-                配送信息：
-                </view>
-                <view>{{ item.dispatchCost ? item.dispatchCost + '元'  : '免运费' }}</view>
-            </view>
-        </view>
-        <view class="order-list-item-ft"        data-id="{{ item._id }}"
-    bindtap="navToDetail">
-            查看详情
-            <view class="navigator-arrow"></view>
-        </view>
-    </view>
+    </scroll-view>
 </view>

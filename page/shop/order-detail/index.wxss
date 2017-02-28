@@ -3,6 +3,7 @@
     padding: 31rpx 0;
     background: #EFEFF4;
     min-height: 100%;
+    box-sizing: border-box;
 }
 .shop-order-detail {
     background: #FFFFFF;

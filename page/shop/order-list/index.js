@@ -1,12 +1,12 @@
-const orderList = require('./order.js')
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const shopId = appInstance.globalData.shopId
 const userId = appInstance.globalData.userId
 
 Page({
-  data:{
-    orderList: orderList
+  data: {
+    skip: 0,
+    orderList: []
   },
   onLoad:function(options){
     this.loadData()
@@ -24,19 +24,33 @@ Page({
     // 页面关闭
   },
   onPullDownRefresh () {
-    console.log('onPullDownRefresh')
+    this.data.skip = 0
+    this.loadData()
   },
-  loadData () {
+  loadMore () {
+    this.data.skip += 10
+    this.loadData(true)
+  },
+  loadData (add) {
     Cov({
       url: '/api/order',
       params: {
+        limit: 10,
+        skip: this.data.skip,
         include: 'shop',
         user: userId
       }
     })
     .then(res => {
+      wx.stopPullDownRefresh()
+      let orderList = this.data.orderList
+      if (add) {
+        orderList = orderList.concat(res.data)
+      } else {
+        orderList = orderList
+      }
       this.setData({
-        orderList: res.data
+        orderList: orderList
       })
     })
   },

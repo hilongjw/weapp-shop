@@ -1,67 +1,41 @@
 {
   "pages": [
-    "page/shop/user/index",
     "page/dash/product/index",
     "page/dash/order-new/index",
     "page/dash/order-detail/index",
-    
     "page/dash/order/index",
-    
-    "page/shop/order-list/index",
-    "page/shop/lobby/lobby",
-    
-    "page/shop/user-location-edit/index",
-    
-    
-    
-    "page/component/index",
-    
-
     "page/dash/setting/setting",
     "page/dash/product-add/index",
     "page/dash/product-norms-add/index",
     "page/dash/product-norms/index",
-
-    
     "page/dash/product-norms-detail/index",
     
     "page/dash/product-category/index",
     "page/dash/product-category-add/index",
-    
     "page/dash/product-category-select/index",
 
-    
-    
-    "page/shop/order-detail/index",
-    
-
-   
-    
-
     "page/dash/setting-status/index",
-
     "page/dash/setting-info/index",
     "page/dash/setting-location/index",
     "page/dash/setting-qr/index",
     "page/dash/setting-name/index",
     "page/dash/setting-logo/index",
-
     "page/dash/setting-dispatch-time/index",
     "page/dash/setting-dispatch-cost/index", 
     "page/dash/setting-dispatch-start/index", 
     "page/dash/setting-phone/index",
-    
 
+    "page/shop/user/index",
+    "page/shop/user-location-edit/index",
+    "page/shop/order-list/index",
+    "page/shop/lobby/lobby",
     
-
+    "page/component/index",
+    
+    "page/shop/order-detail/index",
     "page/shop/order-state/index",
-    
     "page/shop/pre-order/index", 
-    
     "page/shop/user-location/index",
-
-   
-    
     "page/shop/list/list",
     
     "page/dash/verify/verify",
@@ -69,9 +43,9 @@
     "page/dash/register/register"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "演示",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "这个店",
+    "navigationBarBackgroundColor": "#3c3c40",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
@@ -103,5 +77,5 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "debug": false
+  "debug": true
 }

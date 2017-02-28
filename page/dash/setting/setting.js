@@ -58,6 +58,12 @@ let app = {
     // })
     this.loadShop()
   },
+   onShareAppMessage: function () {
+      return {
+          title: this.data.shop.name + ' - 这个店',
+          path: '/page/shop/lobby/lobby?id=' + this.data.shop._id
+      }
+  },
   loadShop () {
     const shopId = '58b1458132f9f1cc1a695000'
     Cov({
