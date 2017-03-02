@@ -1,4 +1,3 @@
-const data = require('./data.js')
 const CovData = require('../../../util/util.js').CovData
 const userData = new CovData('user')
 
@@ -64,7 +63,7 @@ Page({
     callShop () {
         if (!this.data.shop || !this.data.shop.phone) return
         wx.makePhoneCall({
-        phoneNumber: this.data.shop.phone
+            phoneNumber: this.data.shop.phone
         })
     },
     init (shopId) {
@@ -82,6 +81,9 @@ Page({
         .then(res => {
             this.setData({
                 shop: res.data
+            })
+            wx.setNavigationBarTitle({
+                title: this.data.shop.name
             })
         })
     },
@@ -136,7 +138,6 @@ Page({
         })
     },
     getProductById (e) {
-        console.log(e)
         const id = e.target.dataset.id
         const productList = this.data.productList
         let product
@@ -166,15 +167,11 @@ Page({
     },
     productDetail (e) {
         const product = this.getProductById(e)
-        console.log(product)
         this.setData({
             popMask: true,
             productPop: {
                 show: true,
-                id: product.id,
-                name: product.name,
-                cover: product.cover,
-                price: product.price
+                product: product
             }
         })
     },
@@ -189,7 +186,9 @@ Page({
             }
             return product.count
         })
+        
         cartPrice = cartPrice.toFixed(2)
+
         this.setData({
             cartCount: cartCount,
             cartPrice: cartPrice,
@@ -236,8 +235,6 @@ Page({
         })
     },
     toggleCartList (e) {
-        console.log(e)
-        console.log(this.data.popCart)
         const show = !this.data.popCart
         this.setData({
             popMask: show,
@@ -247,17 +244,13 @@ Page({
     showProductNorms (e) {
         if (this.data.shop.status !== 'open') return
         const product = this.getProductById(e)
+
         this.setData({
             popMask: true,
             productNormsPop: {
                 show: true,
                 total: product.price,
-                _id: product._id,
-                name: product.name,
-                cover: product.cover,
-                price: product.price,
-                count: product.count,
-                norms: product.norms,
+                product: product
             }
         })
     },
@@ -267,8 +260,8 @@ Page({
 
         const productNormsPop = this.data.productNormsPop
 
-        const tag = productNormsPop.norms[nIndex].options[tIndex]
-        productNormsPop.norms[nIndex].options.forEach(tag => tag.active = false)
+        const tag = productNormsPop.product.norms[nIndex].options[tIndex]
+        productNormsPop.product.norms[nIndex].options.forEach(tag => tag.active = false)
         tag.active = true
 
         this.setData({
@@ -277,9 +270,9 @@ Page({
     },
     addNormCount (e) {
         const productNormsPop = this.data.productNormsPop
-        if (!productNormsPop.count)productNormsPop.count = 0
-        productNormsPop.count++
-        productNormsPop.total = productNormsPop.price * productNormsPop.count
+        if (!productNormsPop.product.count)productNormsPop.product.count = 0
+        productNormsPop.product.count++
+        productNormsPop.total = productNormsPop.product.price * productNormsPop.product.count
         productNormsPop.total = productNormsPop.total.toFixed(2)
         this.setData({
             productNormsPop: productNormsPop
@@ -288,9 +281,9 @@ Page({
     },
     reduceNormCount (e) {
         const productNormsPop = this.data.productNormsPop
-        productNormsPop.count--
-        if (productNormsPop.count > -1) {
-            productNormsPop.total = productNormsPop.price * productNormsPop.count
+        productNormsPop.product.count--
+        if (productNormsPop.product.count > -1) {
+            productNormsPop.total = productNormsPop.product.price * productNormsPop.product.count
             productNormsPop.total = productNormsPop.total.toFixed(2)
         }
         this.setData({

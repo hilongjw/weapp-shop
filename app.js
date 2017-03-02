@@ -2,9 +2,14 @@ const openIdUrl = require('./config').openIdUrl
 const Cov = require('./vendor/cov.js').Cov
 const updloadImageList = require('./vendor/cov.js').updloadImageList
 
+const CovData = require('./util/util.js').CovData
+
+const userData = new CovData('user')
+
 App({
   onLaunch: function () {
-    console.log('App Launch')
+    console.log('App Launch', this)
+    this.login()
   },
   onShow: function () {
     console.log('App Show', this)
@@ -28,36 +33,80 @@ App({
     userId: '58b133a88d9272c5bc359d7f',
     updloadImageList: updloadImageList
   },
-  // lazy loading openid
-  getUserOpenId: function(callback) {
-    var self = this
+  createUser (code, data) {
+    Cov({
+      url: '/api/user/signup',
+      method: 'post',
+      data: {
+        code: code,
+        username: data.nickName,
+        gender: data.gender,
+        avatar: data.avatarUrl
+      }
+    })
+    .then(res => {
+      let data = res.data
+      userData.set('user', data)
+      this.globalData.token = data.sessionToken
+      this.globalData.userId = data._id
+    })
+  },
+  newUser (code) {
+    wx.getUserInfo({
+      success: (res) => {
+        let data
 
-    if (self.globalData.openid) {
-      callback(null, self.globalData.openid)
-    } else {
-      wx.login({
-        success: function(data) {
-          wx.request({
-            url: openIdUrl,
-            data: {
-              code: data.code
-            },
-            success: function(res) {
-              console.log('拉取openid成功', res)
-              self.globalData.openid = res.data.openid
-              callback(null, self.globalData.openid)
-            },
-            fail: function(res) {
-              console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
-              callback(res)
-            }
-          })
-        },
-        fail: function(err) {
-          console.log('wx.login 接口调用失败，将无法正常使用开放接口等服务', err)
-          callback(err)
+        try {
+          data = JSON.parse(res.rawData)
+        } catch (e) {
+          console.log(e)
         }
-      })
-    }
+
+        if (data) {
+          this.createUser(code, data)
+        }
+      },
+      fail: () => {
+        this.login()
+      }
+    })
+  },
+  signUp () {
+    wx.login({
+      success: (wxres) => {
+        if (wxres.code) {
+          this.newUser(wxres.code)
+        }
+      }
+    })
+  },
+  login () {
+    wx.login({
+      fail: (err) => {
+        console.log(err)
+      },
+      success:(wxres) => {
+        if (wxres.code) {
+          Cov({
+              url: '/api/user/login',
+              method: 'post',
+              data: {
+                code: wxres.code
+              }
+            })
+            .then(res => {
+              const data = res.data
+              userData.set('user', data)
+              console.log(this.globalData.token,  data.sessionToken)
+              this.globalData.token = data.sessionToken
+              console.log(this.globalData.token,  data.sessionToken)
+              this.globalData.userId = data._id
+            })
+            .catch(err => {
+              this.newUser(wxres.code)
+            })
+        }
+      }
+    })
   }
 })

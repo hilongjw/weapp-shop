@@ -1,6 +1,13 @@
 const Promise = require('./promise.js')
+const config = require('../config.js')
+const CovData = require('../util/util.js').CovData
+const baseUrl = config.host
 
-const baseUrl = 'http://127.0.0.1:8081'
+let userData = new CovData('user')
+let user = userData.get('user') || {}
+user.sessionToken = '23234234'
+userData.set('user', user)
+
 function paramsToQuery (params) {
     if (!params) return ''
     let query = ''
@@ -17,8 +24,9 @@ function paramsToQuery (params) {
 
 function Cov ({ url, data, params, header, method }) {
     let query = paramsToQuery(params)
+    user = userData.get('user')
     header = header || {}
-    header['authorization'] = '23234234'
+    header['authorization'] = user.sessionToken
     return new Promise((resolve, reject) => {
         wx.request({
           url: baseUrl + url + query,
@@ -63,7 +71,8 @@ function uploadImage ({ url, src, header }) {
 function updloadImageList (imgs) {
     const url = '/api/file/'
     let header = {}
-    header['authorization'] = '23234234'
+    user = userData.get('user')
+    header['authorization'] = user.sessionToken
     let queue = []
     let up = Promise.resolve()
     imgs.forEach(src => {
@@ -81,22 +90,6 @@ function updloadImageList (imgs) {
         return queue
     })
 }
-
-// Cov({
-//     url: '',
-//     data: {
-//         value: 1
-//     },
-//     params: {
-//         id: 233
-//     }
-// })
-// .then(res => {
-
-// })
-// .catch(err => {
-    
-// })
 
 module.exports = {
     Cov: Cov,

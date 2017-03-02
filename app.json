@@ -1,5 +1,8 @@
 {
   "pages": [
+    "page/shop/list/list",
+    "page/shop/order-list/index",
+
     "page/dash/product/index",
     "page/dash/order-new/index",
     "page/dash/order-detail/index",
@@ -27,7 +30,7 @@
 
     "page/shop/user/index",
     "page/shop/user-location-edit/index",
-    "page/shop/order-list/index",
+    
     "page/shop/lobby/lobby",
     
     "page/component/index",
@@ -36,7 +39,7 @@
     "page/shop/order-state/index",
     "page/shop/pre-order/index", 
     "page/shop/user-location/index",
-    "page/shop/list/list",
+    
     
     "page/dash/verify/verify",
     "page/dash/init/init",
@@ -77,5 +80,5 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "debug": true
+  "debug": false
 }

@@ -3,8 +3,9 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
-const userId = appInstance.globalData.userId
+const user = userData.get('user')
+const userId = user._id
+
 Page({
   data:{
     user: {}
@@ -18,12 +19,6 @@ Page({
   onShow:function(){
     this.loadUser()
     this.loadLocationList()
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
   },
   loadUser () {
     Cov({

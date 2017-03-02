@@ -5,8 +5,7 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
-
+console.log('233', appInstance)
 const geoHash = require('../../../vendor/geo-hash.js')
 
 let page = {

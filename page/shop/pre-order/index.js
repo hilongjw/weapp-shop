@@ -4,7 +4,7 @@ const userData = new CovData('user')
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const shopId = appInstance.globalData.shopId
-const userId = appInstance.globalData.userId
+let userId = appInstance.globalData.userId
 
 Page({
   data:{
@@ -22,7 +22,7 @@ Page({
     productList: []
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    userId = appInstance.globalData.userId
   },
   onReady:function(){
     // 页面渲染完成

@@ -1,7 +1,7 @@
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const shopId = appInstance.globalData.shopId
-const userId = appInstance.globalData.userId
+let userId = appInstance.globalData.userId
 
 Page({
   data: {
@@ -9,13 +9,13 @@ Page({
     orderList: []
   },
   onLoad:function(options){
+    userId = appInstance.globalData.userId
     this.loadData()
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
-    // 页面显示
   },
   onHide:function(){
     // 页面隐藏
@@ -47,7 +47,7 @@ Page({
       if (add) {
         orderList = orderList.concat(res.data)
       } else {
-        orderList = orderList
+        orderList = res.data
       }
       this.setData({
         orderList: orderList

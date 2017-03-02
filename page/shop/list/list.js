@@ -3,7 +3,7 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const userId = appInstance.globalData.userId
+let userId = appInstance.globalData.userId
 
 const geoHash = require('../../../vendor/geo-hash.js')
 
@@ -13,6 +13,7 @@ Page({
     shopList: []
   },
   onLoad:function(options){
+    userId = appInstance.globalData.userId
     this.init()
   },
   onReady:function(){

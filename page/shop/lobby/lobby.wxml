@@ -146,16 +146,22 @@ bindtap="addProductCount"></image>
 
     <view class="product-pop" wx:if="{{productPop.show}}">
         <view class="product-pop-title">
-            {{productPop.name}}
+            {{productPop.product.name}}
         </view>
-        <image class="product-pop-cover" src="{{productPop.cover}}"></image>
+        <swiper class="product-pop-cover">
+            <block wx:key="{{index}}" wx:for="{{productPop.product.images}}" wx:for-item="image">
+                <swiper-item>
+                <image src="{{image}}" class="product-pop-cover"/>
+                </swiper-item>
+            </block>
+        </swiper>
         <view class="product-pop-price">
-            ￥{{productPop.price}}
+            ￥{{productPop.product.price}}
         </view>
         <view 
             class="product-pop-btn"             
             bindtap="addProductToCart"
-            data-id="{{productPop.id}}"
+            data-id="{{productPop.product._id}}"
         >
             加入购物车
         </view>
@@ -165,7 +171,7 @@ bindtap="addProductCount"></image>
         <view class="product-norms-pop-bd">
             <view 
                 class="product-norms-pop-row"
-                wx:for="{{productNormsPop.norms}}" 
+                wx:for="{{productNormsPop.product.norms}}" 
                 wx:for-item="norm"
                 wx:key="{{normIndex}}"
                 wx:for-index="normIndex"
@@ -195,13 +201,13 @@ bindtap="addProductCount"></image>
             <view class="product-norms-pop-count">
                 <view class="cart-pop-product-count">
                     <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_%20reduce.svg"
-data-id="{{productNormsPop._id}}"
-wx:if="{{productNormsPop.count > 0}}"
+data-id="{{productNormsPop.product._id}}"
+wx:if="{{productNormsPop.product.count > 0}}"
 bindtap="reduceNormCount"></image>
                          <text 
-wx:if="{{productNormsPop.count > 0}}"                         class="product-list-item-count-text">{{productNormsPop.count}}</text>
+wx:if="{{productNormsPop.product.count > 0}}"                         class="product-list-item-count-text">{{productNormsPop.product.count}}</text>
                           <image class="product-list-item-count-add" src="http://77wdm6.com1.z0.glb.clouddn.com/quantity_add.svg"
-data-id="{{productNormsPop._id}}"
+data-id="{{productNormsPop.product._id}}"
 bindtap="addNormCount"></image>
                     </view>
             </view>
