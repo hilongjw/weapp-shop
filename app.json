@@ -1,6 +1,13 @@
 {
   "pages": [
     "page/shop/list/list",
+    
+    "page/welcome/init/init",
+    "page/welcome/index/index",
+    "page/welcome/verify/verify",
+    "page/welcome/register/register",
+
+    
     "page/shop/order-list/index",
 
     "page/dash/product/index",
@@ -33,17 +40,10 @@
     
     "page/shop/lobby/lobby",
     
-    "page/component/index",
-    
     "page/shop/order-detail/index",
     "page/shop/order-state/index",
     "page/shop/pre-order/index", 
-    "page/shop/user-location/index",
-    
-    
-    "page/dash/verify/verify",
-    "page/dash/init/init",
-    "page/dash/register/register"
+    "page/shop/user-location/index"
   ],
   "window": {
     "navigationBarTextStyle": "white",

@@ -1,0 +1,17 @@
+<view class="container">
+    <view class="index-hd">
+        <image class="index_logo" src="http://77wdm6.com1.z0.glb.clouddn.com/time.svg"></image>
+        <view class="index-title">审核中，请稍后</view>
+        <view class="index-desc">我们将在24小时内完成审核，请您保持手机畅通。</view>
+    </view>
+    <view class="index-ac">
+        <button type="primary" bindtap="navToInit">查看教程</button>
+        <button>在线客服</button>
+    </view>
+    <view class="index-ft">
+        <view class="flex-wrp">
+        <view class="foot-title" bindtap="navToIndex">这个店</view>
+        <view class="foot-link">zhegedian.com</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,68 @@
+<import src="../../common/components/toptip/index.wxml"></import>
+
+<view class="page">
+ <template is="top-tip" data="{{ topTip }}"></template>
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+        <view class="weui-cells__title">商户名称</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="输入您的商户名称" data-key="name" bindinput="syncInputValue"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">位置信息</view>
+        <view class="weui-cells weui-cells_after-title">
+
+           <view class="weui-cell weui-cell_input" bindtap="getLocation">
+                <view class="weui-cell__hd">
+                     <view class="weui-label">选择地区</view>
+                </view>
+                <view class="weui-cell__bd" bindtap="testLocation" >
+                    <view class="location-text {{ form.address ? '' :'empty' }}">
+                        {{form.address ? form.address : '地区信息'}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-label">详细地址</view>
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="街道门牌信息" style="height: 3.3em" data-key="addressDetail" bindinput="syncInputValue"/>
+                    <view class="weui-textarea-counter">{{form.addressDetail.length}}/200</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title">经营范围</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="您主要都经营那些商品和服务" style="height: 3.3em" data-key="scope" bindinput="syncInputValue" />
+                    <view class="weui-textarea-counter">{{form.scope.length}}/200</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">营业执照</view>
+         <view class="weui-cells imagebox">
+            <view class="image-box-item"  wx:for="{{images}}">
+                <view 
+                    data-index="{{index}}"
+                    bindtap="removeImage" class="weui-uploader__file-delete">
+                    删除
+                </view>
+                <image class="image-box-item-image" src="{{item}}" data-src="{{item}}"             bindtap="previewImage"></image>
+            </view>
+            <view class="imagebox-add">
+                <image mode="scaleToFill" class="imagebox-add-icon" bindtap="chooseImage" src="http://77wdm6.com1.z0.glb.clouddn.com/add.svg"></image>
+            </view>
+         </view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="save">确定</button>
+        </view>
+    </view>
+</view>

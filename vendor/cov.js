@@ -34,7 +34,11 @@ function Cov ({ url, data, params, header, method }) {
           method: method || 'get',
           header: header,
           success (res) {
-            resolve(res)
+              if (res.statusCode > 299) {
+                reject(res)
+              } else {
+                resolve(res)
+              }
           },
           fail (err) {
             reject(err)

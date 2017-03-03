@@ -1,0 +1,45 @@
+@import "../../common/index.wxss";
+.imagebox {
+    display: flex;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.image-box-item {
+    position: relative;
+    width: 116rpx;
+    height: 116rpx;
+    margin-right: 20rpx;
+}
+.image-box-item-image {
+    width: 116rpx;
+    height: 116rpx;
+}
+.imagebox-add {
+    height: 56rpx;
+    width: 56rpx;
+    border: 1px solid #CCCCCC;
+    padding: 30rpx;
+}
+.imagebox-add-icon {
+    height: 56rpx;
+    width: 56rpx;
+}
+.weui-uploader__file-delete {
+    position: absolute;
+    font-size: 20rpx;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 2px 10rpx;
+    background: rgba(0,0,0,0.5)
+}
+.location-text {
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #000;
+    letter-spacing: 0;
+    padding: 20rpx 80rpx 20rpx 0;
+}
+.location-text.empty {
+    opacity: 0.6;
+}

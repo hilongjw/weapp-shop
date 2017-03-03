@@ -51,6 +51,7 @@ Page({
         cartCount: 0,
         cartPrice: 0,
         cartList: [],
+        cartQueue: [],
         categoryList: [],
         productList: []
     },
@@ -74,16 +75,27 @@ Page({
         this.initProduct(shopId)
         this.initShop(shopId)
     },
+    navToWelcome (id) {
+        wx.redirectTo({
+          url: '/page/welcome/index/index?id=' + id
+        })
+    },
     initShop (id) {
         Cov({
             url: '/api/shop/' + id
         })
         .then(res => {
+            let shop = res.data
+
+            if (!shop.user) {
+                return this.navToWelcome(shop._id)
+            }
+
             this.setData({
-                shop: res.data
+                shop: shop
             })
             wx.setNavigationBarTitle({
-                title: this.data.shop.name
+                title: shop.name
             })
         })
     },

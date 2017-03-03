@@ -1,0 +1,4 @@
+@import "../../common/index.wxss";
+.weui-vcode-btn.gray {
+    color: #666;
+}
