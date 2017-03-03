@@ -4,6 +4,7 @@
     background: #EFEFF4;
     min-height: 100%;
     padding-top: 30rpx;
+    box-sizing: border-box;
 }
 .dash-setting-info {
     position: relative;

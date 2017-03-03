@@ -108,5 +108,8 @@
         <button class="dash-order-detail-action-btn" type="warn" plain="true" bindtap="cancelOrder"> 拒绝 </button>
         <button class="dash-order-detail-action-btn" type="primary" bindtap="confirmOrder"> 接单 </button>
     </view>
+        <view class="dash-order-detail-action" wx:if="{{ order.status === 'sending' }}">
+        <button class="dash-order-detail-action-btn" type="primary" bindtap="doneOrder"> 完成订单 </button>
+    </view>
     
 </view>

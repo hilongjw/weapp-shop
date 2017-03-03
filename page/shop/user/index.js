@@ -3,8 +3,6 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const user = userData.get('user')
-const userId = user._id
 
 Page({
   data:{
@@ -17,10 +15,12 @@ Page({
     // 页面渲染完成
   },
   onShow:function(){
-    this.loadUser()
-    this.loadLocationList()
+    const user = userData.get('user')
+    const userId = user._id
+    this.loadUser(userId)
+    this.loadLocationList(userId)
   },
-  loadUser () {
+  loadUser (userId) {
     Cov({
       url: '/api/user/' + userId
     })
@@ -30,7 +30,7 @@ Page({
       })
     })
   },
-  loadLocationList () {
+  loadLocationList (userId) {
     Cov({
       url: '/api/address',
       params: {
@@ -46,16 +46,7 @@ Page({
   navToLocation (e) {
     let id = e.target.dataset.id
     wx.navigateTo({
-        url: '/page/shop/user-location-edit/index'+ (id ? '?id=' + id : ''),
-        success: function(res){
-            console.log(res)
-        },
-        fail: function() {
-            // fail
-        },
-        complete: function() {
-            // complete
-        }
+        url: '/page/shop/user-location-edit/index'+ (id ? '?id=' + id : '')
     })
   }
 })

@@ -3,7 +3,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 let app = {
   data: {
@@ -38,6 +39,8 @@ let app = {
     userData.set('pre-product', product)
   },
   init () {
+    shop = userData.get('shop') || {}
+    shopId = shop._id
     const product = userData.get('pre-product') || {}
     const selectedList = product.category || []
     Cov({

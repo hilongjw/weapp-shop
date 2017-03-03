@@ -12,7 +12,7 @@
             
           </view>
           <view class="weui-cell__bd">
-            <picker mode="time" bindchange="bindPickerChange" value="{{form.dispatchTime}}">
+            <picker mode="time" bindchange="bindPickerChange">
               <view class="weui-input">{{form.dispatchTime}}</view>
             </picker>
           </view>

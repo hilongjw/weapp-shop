@@ -7,3 +7,7 @@
 .dash-setting-qr-action {
     padding: 60rpx 40rpx 0 40rpx;
 }
+.qrimage {
+    width: 750rpx;
+    height: 750rpx;
+}

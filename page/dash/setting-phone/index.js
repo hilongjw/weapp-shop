@@ -5,7 +5,6 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
 
 let page = {
   data:{
@@ -30,8 +29,9 @@ let page = {
     })
   },
   save () {
+    const shop = userData.get('shop') || {}
     Cov({
-      url: '/api/shop/' + shopId,
+      url: '/api/shop/' + shop._id,
       method: 'patch',
       data: {
         phone: this.data.phone

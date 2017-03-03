@@ -5,7 +5,6 @@ const userData = new CovData('user')
 const geoHash = require('../../../vendor/geo-hash.js')
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
 
 let page = {
   data:{
@@ -54,7 +53,7 @@ let page = {
     userData.set('shop', shop)
 
     Cov({
-      url: '/api/shop/' + shopId,
+      url: '/api/shop/' + shop._id,
       method: 'patch',
       data: {
         geoHash: form.geoHash,

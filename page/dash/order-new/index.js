@@ -1,8 +1,11 @@
 const dashTab = require('../../common/components/dash-tab/index.js')
 
 const appInstance = getApp()
+const CovData = require('../../../util/util.js').CovData
+const userData = new CovData('user')
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
+const shop = userData.get('shop') || {}
+const shopId = shop._id
 
 let app = {
   data:{

@@ -1,7 +1,10 @@
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
-const shopGeoHash = appInstance.globalData.geoHash
+const CovData = require('../../../util/util.js').CovData
+const userData = new CovData('user')
+const shop = userData.get('shop') || {}
+const shopId = shop._id
+const shopGeoHash = shop.geoHash
 
 const getDistance = require('../../../vendor/get-distance.js')
 const geoHash = require('../../../vendor/geo-hash.js')
@@ -57,6 +60,27 @@ Page({
     const phone = e.currentTarget.dataset.phone
     wx.makePhoneCall({
       phoneNumber: phone
+    })
+  },
+  doneOrder () {
+    Cov({
+      url: '/api/order/' + this.data.order._id,
+      method: 'patch',
+      data: {
+        status: 'done'
+      }
+    })
+    .then(res => {
+      wx.showToast({
+        title: '订单完成',
+        icon: 'success',
+        duration: 2000
+      })
+      let order = this.data.order
+      order.status = 'done'
+      this.setData({
+        order: order
+      })
     })
   },
   confirmOrder () {

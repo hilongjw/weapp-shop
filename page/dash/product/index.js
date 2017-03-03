@@ -5,14 +5,25 @@ const dashTab = require('../../common/components/dash-tab/index.js')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 let app = {
     onLoad () {
     },
     onShow () {
+        shop = userData.get('shop') || {}
+        shopId = shop._id
+        if (!shopId) {
+            appInstance.loadShop(() => {
+                shop = userData.get('shop') || {}
+                shopId = shop._id
+                this.init()
+            })
+        } else {
+            this.init()
+        }
         this.setTabBarActive('product')
-        this.init()
     },
     data: {
         viewShow: 'product',
@@ -85,7 +96,7 @@ let app = {
         Cov({
             url: '/api/category',
             params: {
-                 ascending: 'index',
+                ascending: 'index',
                 shop: shopId
             }
         })

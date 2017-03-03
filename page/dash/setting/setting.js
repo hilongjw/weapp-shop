@@ -42,6 +42,7 @@ let app = {
     // 页面渲染完成
   },
   onShow:function(){
+    console.log('setting show')
     this.setTabBarActive('shop')
     this.init()
   },
@@ -52,10 +53,6 @@ let app = {
     // 页面关闭
   },
   init () {
-    // const shop = userData.get('shop') || shopDefault
-    // this.setData({
-    //   shop: shop
-    // })
     this.loadShop()
   },
    onShareAppMessage: function () {
@@ -65,12 +62,14 @@ let app = {
       }
   },
   loadShop () {
-    const shopId = '58b1458132f9f1cc1a695000'
+    const user = userData.get('user')
+    const shopId = user.shop
     Cov({
       url: '/api/shop/' + shopId
     })
     .then(res => {
       let shop = res.data
+      userData.set('shop', shop)
       this.setData({
         shop: shop
       })

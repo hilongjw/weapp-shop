@@ -23,10 +23,7 @@ Page({
   },
   initOrder (id) {
     Cov({
-      url: 'api/order/' + id,
-      params: {
-        include: 'address,user,shop,products'
-      }
+      url: 'api/order/' + id
     })
     .then(res => {
       let order = res.data
@@ -37,7 +34,7 @@ Page({
   },
   navToOrder () {
     wx.redirectTo({
-      url: '/page/shop/order-detail/index?id' + this.data.id 
+      url: '/page/shop/order-detail/index?id=' + this.data.id
     })
   }
 })

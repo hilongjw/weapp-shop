@@ -1,20 +1,25 @@
 {
   "pages": [
-    "page/shop/list/list",
+    "page/dash/setting/setting",
+    "page/dash/product/index",
+
+    "page/shop/order-list/index",
     
+    "page/shop/list/list",
+
     "page/welcome/init/init",
     "page/welcome/index/index",
     "page/welcome/verify/verify",
     "page/welcome/register/register",
 
     
-    "page/shop/order-list/index",
+    
 
-    "page/dash/product/index",
+    
     "page/dash/order-new/index",
     "page/dash/order-detail/index",
     "page/dash/order/index",
-    "page/dash/setting/setting",
+    
     "page/dash/product-add/index",
     "page/dash/product-norms-add/index",
     "page/dash/product-norms/index",

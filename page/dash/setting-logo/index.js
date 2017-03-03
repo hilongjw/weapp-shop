@@ -4,7 +4,6 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
 const updloadImageList = appInstance.globalData.updloadImageList
 
 Page({
@@ -61,8 +60,9 @@ Page({
     updloadImageList([img])
       .then(imglist => {
         let logo = imglist[0]
+        const shop = userData.get('shop') || {}
         return Cov({
-          url: '/api/shop/' + shopId,
+          url: '/api/shop/' + shop._id,
           method: 'patch',
           data: {
             logo: logo

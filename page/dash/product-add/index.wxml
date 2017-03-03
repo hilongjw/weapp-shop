@@ -85,7 +85,7 @@
                 <view class="weui-label">库存</view>
             </view>
             <view class="weui-cell__bd">
-                <input type="number" bindinput="syncInputValue" class="weui-input" placeholder="可不填，默认无限库存" data-key="stock" value="{{product.stock}}"/>
+                <input type="number" bindinput="syncInputValue" class="weui-input" placeholder="可不填，默认无限库存" data-key="stock" value="{{product.stock === -1 ? '' : product.stock }}"/>
             </view>
         </view>
     </view>

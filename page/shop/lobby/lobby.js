@@ -305,11 +305,8 @@ Page({
     },
     navToPreOrder () {
         userData.set('cartList', this.data.cartList)
-
-        console.log(this.data.cartList)
-
         wx.navigateTo({
-            url:'/page/shop/pre-order/index'
+            url:'/page/shop/pre-order/index?id=' + this.data.shop._id
         })
     }
 })

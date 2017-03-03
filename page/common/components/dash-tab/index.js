@@ -33,11 +33,14 @@ let tabbar = [{
 }]
 
 const Promise = require('../../../../vendor/promise.js')
+const CovData = require('../../../../util/util.js').CovData
+const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 let dashNav = appInstance.globalData.dashNav
-const shopId = appInstance.globalData.shopId
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 const keyCount = {
     notify: {
@@ -56,8 +59,17 @@ const keyCount = {
     }
 }
 
+function updateShopId () {
+    shop = userData.get('shop') || {}
+    shopId = shop._id
+    Object.keys(keyCount).map(key => {
+        keyCount[key].params.shop = shopId
+    })
+}
+
 function updateAllCount () {
     let queue = []
+    updateShopId()
     Object.keys(keyCount).forEach(key => {
         queue.push(updateTabCount(key))
     })
@@ -65,7 +77,10 @@ function updateAllCount () {
 }
 
 function updateTabCount (key) {
-    if (!keyCount[key]) return Promise.resolve()
+    if (!keyCount[key] || !keyCount[key].params.shop ) {
+        appInstance.loadShop()
+        return Promise.resolve()
+    }
     return Cov(keyCount[key])
     .then(res => {
         let count = res.data.count

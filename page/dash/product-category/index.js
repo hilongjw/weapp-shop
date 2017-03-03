@@ -4,7 +4,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 let app = {
   data: {
@@ -44,6 +45,8 @@ let app = {
     this.data.oldList = JSON.parse(JSON.stringify(newList))
   },
   init () {
+    shop = userData.get('shop') || {}
+    shopId = shop._id
     Cov({
       url: '/api/category/',
       params: {

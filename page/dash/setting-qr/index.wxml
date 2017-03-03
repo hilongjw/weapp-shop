@@ -1,11 +1,11 @@
 <!--pages/main/index.wxml-->
 <view class="dash-setting-qr-view">
     <view class="img-box">
-        <canvas bindtap="previewImg" hidden="{{canvasHidden}}" style="width: 750rpx;height: 750rpx;background:#fff;" canvas-id="mycanvas"/>
+        <image bindtap="previewImg" class="qrimage"src="{{ qrImage }}"></image>
     </view>
     <view class="dash-setting-qr-action">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="getImageFromCamera">保存到手机</button>
+            <button class="weui-btn" type="primary" bindtap="previewImg">保存到手机</button>
         </view>
     </view>
 </view>

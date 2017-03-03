@@ -3,13 +3,12 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
 let userId = appInstance.globalData.userId
 
 Page({
   data:{
     form: {
-      dispatchTime: 0,
+      dispatchTime: '',
       remark: '',
       location: {
         _id: '',
@@ -22,6 +21,7 @@ Page({
     productList: []
   },
   onLoad:function(options){
+    this.data.shopId = options.id
     userId = appInstance.globalData.userId
   },
   onReady:function(){
@@ -86,16 +86,7 @@ Page({
   },
   navToLocation (e) {
     wx.navigateTo({
-        url: '/page/shop/user-location/index', 
-        success: function(res){
-            console.log(res)
-        },
-        fail: function() {
-            // fail
-        },
-        complete: function() {
-            // complete
-        }
+        url: '/page/shop/user-location/index'
     })
   },
   createOrder () {
@@ -109,7 +100,7 @@ Page({
         mark: this.data.form.remark,
         dispatchAt: this.data.form.dispatchTime,
         detail: detail,
-        shop: shopId
+        shop: this.data.shopId
       }
     })
     .then(res => {

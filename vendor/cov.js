@@ -5,8 +5,6 @@ const baseUrl = config.host
 
 let userData = new CovData('user')
 let user = userData.get('user') || {}
-user.sessionToken = '23234234'
-userData.set('user', user)
 
 function paramsToQuery (params) {
     if (!params) return ''
@@ -24,7 +22,7 @@ function paramsToQuery (params) {
 
 function Cov ({ url, data, params, header, method }) {
     let query = paramsToQuery(params)
-    user = userData.get('user')
+    user = userData.get('user') || {}
     header = header || {}
     header['authorization'] = user.sessionToken
     return new Promise((resolve, reject) => {

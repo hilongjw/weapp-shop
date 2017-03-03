@@ -18,6 +18,7 @@ App({
     console.log('App Hide')
   },
   globalData: {
+    logining: false,
     hasLogin: false,
     openid: null,
     dashNav: {
@@ -28,10 +29,28 @@ App({
     },
     geoHash: 'wx4g0bm3u',
     Cov: Cov,
-    shopId: '58b1458132f9f1cc1a695000',
-    token: '23234234',
-    userId: '58b133a88d9272c5bc359d7f',
     updloadImageList: updloadImageList
+  },
+  loadShop (callback) {
+    const user = userData.get('user') || {}
+    const userId = user._id
+
+    if (!userId) {
+      return this.login()
+    }
+
+    const shopId = user.shop
+
+    if (!shopId) return 
+
+    Cov({
+      url: '/api/shop/' + shopId
+    })
+    .then(res => {
+      userData.set('shop', res.data)
+      callback && callback()
+    })
+
   },
   createUser (code, data) {
     Cov({
@@ -81,10 +100,9 @@ App({
     })
   },
   login () {
+    if (this.globalData.logining) return
+    this.globalData.logining = true
     wx.login({
-      fail: (err) => {
-        console.log(err)
-      },
       success:(wxres) => {
         if (wxres.code) {
           Cov({
@@ -95,15 +113,15 @@ App({
               }
             })
             .then(res => {
+              this.globalData.logining = false
               const data = res.data
               userData.set('user', data)
-              console.log(this.globalData.token,  data.sessionToken)
               this.globalData.token = data.sessionToken
-              console.log(this.globalData.token,  data.sessionToken)
               this.globalData.userId = data._id
+              console.log('logined', this.globalData)
             })
             .catch(err => {
-              this.newUser(wxres.code)
+              this.signUp()
             })
         }
       }

@@ -3,7 +3,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shopId = appInstance.globalData.shopId
+const shop = userData.get('shop') || {}
+const shopId = shop._id
 const updloadImageList = appInstance.globalData.updloadImageList
 
 const productDefault = {
