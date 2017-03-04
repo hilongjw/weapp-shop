@@ -30,7 +30,10 @@ Page({
   },
   init () {
     Cov({
-      url: '/api/shop'
+      url: '/api/shop',
+      params: {
+        open: true
+      }
     })
     .then(res => {
       this.setData({
@@ -42,14 +45,14 @@ Page({
     Cov({
       url: '/api/shop',
       data: {
-        geoHash: hash
+        geoHash: hash,
+        open: true
       }
     })
     .then(res => {
       let shopList = this.data.shopList
-      shopList = shopList.concat(res.data)
       this.setData({
-        shopList: shopList
+        nearList: shopList
       })
     })
   },

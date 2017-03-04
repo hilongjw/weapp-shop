@@ -95,6 +95,11 @@ let app = {
       url: '/page/dash/setting-phone/index'
     })
   },
+  navToHelp () {
+    wx.navigateTo({
+          url: '/page/dash/help/index'
+        })
+  },
   navToDispatchStart () {
     wx.navigateTo({
       url: '/page/dash/setting-dispatch-start/index'

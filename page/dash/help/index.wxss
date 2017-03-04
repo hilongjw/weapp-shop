@@ -1,0 +1,8 @@
+@import "../../../vendor/wxParse/wxParse.wxss";
+.help-view {
+    background: #EFEFF4;
+    min-height: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+    font-size: 28rpx;
+}

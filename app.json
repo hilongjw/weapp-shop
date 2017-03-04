@@ -1,20 +1,17 @@
 {
   "pages": [
+    "page/dash/help/index",
+    "page/shop/order-list/index",
     "page/dash/setting/setting",
+    
     "page/dash/product/index",
 
-    "page/shop/order-list/index",
-    
     "page/shop/list/list",
 
-    "page/welcome/init/init",
-    "page/welcome/index/index",
-    "page/welcome/verify/verify",
     "page/welcome/register/register",
-
-    
-    
-
+    "page/welcome/index/index",
+    "page/welcome/init/init",
+    "page/welcome/verify/verify",
     
     "page/dash/order-new/index",
     "page/dash/order-detail/index",

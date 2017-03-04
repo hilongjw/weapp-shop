@@ -9,13 +9,14 @@ Page({
     orderList: []
   },
   onLoad:function(options){
-    userId = appInstance.globalData.userId
-    this.loadData()
+    
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
+    userId = appInstance.globalData.userId
+    this.loadData()
   },
   onHide:function(){
     // 页面隐藏

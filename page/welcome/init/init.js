@@ -97,7 +97,7 @@ let app = {
             msg = formMap[key] + '未填写'
         }
     })
-    if (!this.images.length) {
+    if (!this.data.images.length) {
       allDone = false
       msg = '营业执照未上传'
     }

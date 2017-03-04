@@ -15,7 +15,7 @@ function paramsToQuery (params) {
             paramsArr.push([key, params[key]].join('='))
         }
     })
-    if (!paramsArr.length) return
+    if (!paramsArr.length) return ''
     query = paramsArr.join('&')
     return '?' + query
 }

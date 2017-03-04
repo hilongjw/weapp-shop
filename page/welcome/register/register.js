@@ -47,10 +47,6 @@ Page({
         return allDone
     },
     sendVerify () {
-        if (!this.data.form.phone) return this.showTopTips('手机号码未填写')
-        const phoneReg = /^1[3-9][0-9]{9}$/
-        if (!phoneReg.test(this.data.form.phone)) return this.showTopTips('请填写正确的手机号码')
-
         Cov({
             url: '/api/user/sendsms',
             method: 'post',
@@ -71,12 +67,17 @@ Page({
         })
     },
     getVerifyCode () {
+        if (!this.data.form.phone) return this.showTopTips('手机号码未填写')
+        const phoneReg = /^1[3-9][0-9]{9}$/
+        if (!phoneReg.test(this.data.form.phone)) return this.showTopTips('请填写正确的手机号码')
+
         if (this.data.verify > 1) return
+
         clearInterval(this.data.timer)
         this.data.verify = 10
         this.data.timer = setInterval(() => {
             console.log(this.data.verify)
-            if (this.data.verif < 1) {
+            if (this.data.verify < 1) {
                 clearInterval(this.data.timer)
             }
             this.setData({

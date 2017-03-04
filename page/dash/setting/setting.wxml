@@ -61,7 +61,7 @@
         <view class="navigator-arrow"></view>
     </view>
 
-    <view class="dash-setting-cell help">
+    <view class="dash-setting-cell help" bindtap="navToHelp">
         <image class="dash-setting-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/help.svg"></image>
         <view>帮助</view>
         <view class="navigator-arrow"></view>

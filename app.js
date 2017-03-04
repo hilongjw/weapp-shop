@@ -118,7 +118,11 @@ App({
               userData.set('user', data)
               this.globalData.token = data.sessionToken
               this.globalData.userId = data._id
-              console.log('logined', this.globalData)
+              if (data.role === 'merchant' && data.shop) {
+                wx.redirectTo({
+                  url: '/page/dash/setting/setting'
+                })
+              }
             })
             .catch(err => {
               this.signUp()
