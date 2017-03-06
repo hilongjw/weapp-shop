@@ -46,6 +46,11 @@ let app = {
     })
     .then(res => {
       let shop = res.data
+      if (!shop.open) {
+        return wx.redirectTo({
+          url: '/page/welcome/verify/verify'
+        })
+      }
       userData.set('shop', shop)
       this.setData({
         shop: shop

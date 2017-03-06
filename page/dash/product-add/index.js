@@ -3,8 +3,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shop = userData.get('shop') || {}
-const shopId = shop._id
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 const updloadImageList = appInstance.globalData.updloadImageList
 
 const productDefault = {
@@ -86,6 +86,8 @@ Page({
     }
   },
   save () {
+    shop = userData.get('shop') || {}
+    shopId = shop._id
     const product = this.data.product
     const categoryList = product.category || []
     const category = categoryList.map(item => {

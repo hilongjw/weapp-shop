@@ -95,6 +95,8 @@ let app = {
       })
       this.data.params.status = topTabNav[index].key  
       this.data.params.skip = 0
+      this.data.status.ended = false
+      console.log(this.data.params)
       this.loadOrder()
   },
   navToDetail (e) {

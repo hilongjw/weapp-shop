@@ -48,7 +48,11 @@
         </view>
         <view class="weui-cells__title">营业执照</view>
          <view class="weui-cells imagebox">
-            <view class="image-box-item"  wx:for="{{images}}">
+            <view 
+            class="image-box-item"  
+            wx:for="{{images}}"
+            wx:key="{{index}}"
+            >
                 <view 
                     data-index="{{index}}"
                     bindtap="removeImage" class="weui-uploader__file-delete">

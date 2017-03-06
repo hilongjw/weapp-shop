@@ -1,1 +1,12 @@
 @import "../../common/index.wxss";
+
+.service-btn {
+    background: #F8F8F8;
+    border: 2rpx solid rgba(5,5,5,0.10);
+    border-radius: 10rpx;
+    padding: 22rpx;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 50rpx
+}

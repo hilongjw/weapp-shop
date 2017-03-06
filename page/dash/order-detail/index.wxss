@@ -74,6 +74,7 @@
     padding: 30rpx;
     background: #fff;
     justify-content: space-between;
+    overflow: hidden;
 }
 .ts-cells-price-title {
     font-family: PingFangSC-Regular;

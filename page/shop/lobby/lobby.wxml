@@ -121,6 +121,7 @@ bindtap="addProductCount"></image>
             </view>
         </scroll-view>
     </view>
+    
     <view class="shop-cart-tab">
         <view class="shop-cart-logo" bindtap="toggleCartList">
             <view wx:if="{{ cartCount }}" class="shop-cart-logo-badge">{{cartCount}}</view>
@@ -132,7 +133,7 @@ bindtap="addProductCount"></image>
                     ￥{{cartPrice}}
                 </view>
                 <view class="shop-cart-dispatch {{ cartCount ? '' : 'empty' }}">
-                    配送费 ￥5
+                    配送费 ￥{{shop.dispatchCost}}
                 </view>
             </view>
              <view class="shop-cart-action">

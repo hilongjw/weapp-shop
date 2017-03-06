@@ -45,16 +45,11 @@ Page({
         form: form
     })
   },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
   initCartList () {
-      const cartList = userData.get('cartList') || []
+      const cartList = userData.get('cartList') || []    
+      const shop = userData.get('shop') || {}
       const form = this.data.form
-      let total = 0
+      let total = shop.dispatchCost || 0
 
       cartList.forEach(item => {
         total += item.price * item.count
@@ -89,7 +84,7 @@ Page({
         url: '/page/shop/user-location/index'
     })
   },
-  createOrder () {
+  createOrder (formId) {
     const detail = this.data.productList
  
     Cov({
@@ -100,7 +95,8 @@ Page({
         mark: this.data.form.remark,
         dispatchAt: this.data.form.dispatchTime,
         detail: detail,
-        shop: this.data.shopId
+        shop: this.data.shopId,
+        formId: formId
       }
     })
     .then(res => {
@@ -110,13 +106,13 @@ Page({
       })
     })
   },
-  submitOrder () {
+  submitOrder (e) {
+    let formId = e.detail.formId
     if (!this.data.form.location._id) {
       console.log('miss location')
     }
     let data = this.data.form
     data.productList = this.data.productList
-    console.log(data)
-    this.createOrder()
+    this.createOrder(formId)
   }
 })

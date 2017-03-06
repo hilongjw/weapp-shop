@@ -1,3 +1,4 @@
+<form report-submit="true" bindsubmit="submitOrder">
 <view class="page pre-order-view">
     <view class="weui-cells__title">配送地址</view>
     <view class="pre-order-location" bindtap="navToLocation">
@@ -52,6 +53,7 @@
                 ￥{{ form.total }}
             </view>
         </view>
-        <button class="pre-order-bar-submit" bindtap="submitOrder">下单</button>
+        <button formType="submit" class="pre-order-bar-submit">下单</button>
     </view>
 </view>
+</form>

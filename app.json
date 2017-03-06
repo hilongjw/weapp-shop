@@ -1,6 +1,9 @@
 {
   "pages": [
     "page/shop/list/list",
+    "page/welcome/verify/verify",
+    "page/welcome/init/init",
+    
 
     "page/dash/product-add/index",
     "page/dash/help/index",
@@ -10,8 +13,8 @@
   
     "page/welcome/register/register",
     "page/welcome/index/index",
-    "page/welcome/init/init",
-    "page/welcome/verify/verify",
+    
+    
     
     "page/dash/order-new/index",
     "page/dash/order-detail/index",

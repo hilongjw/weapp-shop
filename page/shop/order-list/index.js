@@ -16,6 +16,7 @@ Page({
   },
   onShow:function(){
     userId = appInstance.globalData.userId
+    this.data.skip = 0
     this.loadData()
   },
   onHide:function(){

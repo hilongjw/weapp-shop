@@ -91,6 +91,8 @@ Page({
                 return this.navToWelcome(shop._id)
             }
 
+            userData.set('shop', shop)
+
             this.setData({
                 shop: shop
             })

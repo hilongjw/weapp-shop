@@ -11,6 +11,7 @@
 .shop-view {
     width: 750rpx;
     height: 100%;
+    overflow: hidden;
 }
 .shop-view.unopen .product-list-item-action {
     opacity: 0.5
@@ -160,6 +161,7 @@
     background: #fff;
     width: 750rpx;
     height: 100rpx;
+    box-sizing: border-box;
     padding-left: 154rpx;
     background: #FFFFFF;
     border: 1px solid #E5E5E5;
