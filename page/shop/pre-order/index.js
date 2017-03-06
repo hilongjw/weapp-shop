@@ -109,7 +109,11 @@ Page({
   submitOrder (e) {
     let formId = e.detail.formId
     if (!this.data.form.location._id) {
-      console.log('miss location')
+      return wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '请选择配送地址'
+      })
     }
     let data = this.data.form
     data.productList = this.data.productList

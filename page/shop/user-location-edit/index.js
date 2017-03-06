@@ -111,6 +111,10 @@ let page = {
         msg = keyNameMap[key] + '未填写'
       }
     })
+    const phoneReg = /^1[3-9][0-9]{9}$/
+    if (!phoneReg.test(this.data.form.phone)) {
+      msg = '请填写正确的手机号码'
+    }       
     if (msg) return this.showTopTip(msg)
     this.save()
   }

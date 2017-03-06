@@ -306,6 +306,18 @@ Page({
         this.reduceProductCount(e)
     },
     navToPreOrder () {
+        const cartPrice = this.data.cartPrice
+        const shop = userData.get('shop')
+        const dispatchStartPrice = shop.dispatchStartPrice || 0
+
+        if (Number(cartPrice) < dispatchStartPrice) {
+            return wx.showModal({
+                title: '提示',
+                showCancel: false,
+                content: '没有到商家的起送金额'
+            })
+        }
+        if (this.data.cartPrice)
         userData.set('cartList', this.data.cartList)
         wx.navigateTo({
             url:'/page/shop/pre-order/index?id=' + this.data.shop._id
