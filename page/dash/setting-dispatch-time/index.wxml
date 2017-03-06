@@ -27,8 +27,8 @@
 
         </view>
 
-        <!--<view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="navToVerify">确定</button>
-        </view>-->
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="save">确定</button>
+        </view>
     </view>
 </view>

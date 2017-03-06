@@ -13,4 +13,8 @@
             src="http://77wdm6.com1.z0.glb.clouddn.com/selected.svg"></image>
             <view wx:if="{{ index !== (statusList.length - 1) }}" class="dash-setting-cell-border"></view>
     </view>
+
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="save">确定</button>
+    </view>
 </view>

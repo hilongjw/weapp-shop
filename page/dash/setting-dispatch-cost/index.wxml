@@ -10,7 +10,7 @@
                     <view class="weui-label">￥</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="" bindinput="syncInputValue" value="{{cost}}"/>
+                    <input type="number" class="weui-input" placeholder="" bindinput="syncInputValue" value="{{cost}}"/>
                 </view>
             </view>
         </view>

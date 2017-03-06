@@ -79,7 +79,7 @@ Page({
   getImageFromCamera () {
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: ['camera'],
       success: (res) => {
         var tempFilePaths = res.tempFilePaths
@@ -91,7 +91,7 @@ Page({
   getImageFromAlbum () {
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: ['album'],
       success: (res) => {
         var tempFilePaths = res.tempFilePaths

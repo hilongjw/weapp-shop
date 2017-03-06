@@ -24,13 +24,15 @@ Page({
   onLoad:function(options){
     if (options.id) {
       this.init(options.id)
+    } else {
+      this.init()
     }
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
-    this.init()
+    this.updateFromCache()
   },
   onHide:function(){
     this.saveLocal()
@@ -41,8 +43,16 @@ Page({
   saveLocal () {
     userData.set('pre-product', this.data.product)
   },
+  updateFromCache () {
+    if (this.data.locked) return
+    let product = userData.get('pre-product') || {}
+    this.setData({
+      product: product
+    })
+  },
   init (id) {
     if (id) {
+      this.data.locked = true
       Cov({
         url: '/api/product/' + id,
         params: {
@@ -66,6 +76,7 @@ Page({
           product: product
         })
         userData.set('pre-product', product)
+        this.data.locked = false
       })
     } else {
       let product = userData.get('pre-product') || {}
@@ -134,7 +145,6 @@ Page({
         product: data
     })
   },
-
   navToCategory () {
     wx.navigateTo({
       url: '/page/dash/product-category-select/index'
@@ -162,32 +172,26 @@ Page({
     })
   },
   chooseImage () {
-    let product = this.data.product
-    let images = product && product.images || []
+    this.data.locked = true
+    let product = this.data.product || {}
+    let images = product.images || []
     wx.chooseImage({
       count: 5 - images.length,
-      sizeType: ['compressed'],
+      sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success:  (res) => {
+        console.log(res)
         var tempFilePaths = res.tempFilePaths
         product.images = images.concat(tempFilePaths)
-
+        this.data.locked = false
         this.setData({
           product: product
         })
+        userData.set('pre-product', product)
+      },
+      fail (err) {
+        console.log(err)
       }
-    })
-  },
-  create () {
-    Cov({
-      url: '/api/product/',
-      method: 'post',
-      data: {
-        shop: shopId
-      }
-    })
-    .then(res => {
-      // wx.navigateBack()
     })
   }
 })

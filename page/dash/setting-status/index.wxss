@@ -27,3 +27,6 @@
     left: 37rpx;
     border-bottom: 1rpx solid #EFEFF4;
 }
+.weui-btn-area {
+    padding: 30rpx;
+}

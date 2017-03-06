@@ -21,20 +21,8 @@ let page = {
       active: false
     }]
   },
-  onLoad (options) {
-  
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
   onShow:function(){
     this.init()
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    this.save()
   },
   init () {
     const shop = userData.get('shop') || {}
@@ -71,6 +59,7 @@ let page = {
     }).then(res => {
       shop = res.data
       userData.set('shop', shop)
+      wx.navigateBack()
     })
   },
   chooseItem (e) {

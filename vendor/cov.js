@@ -24,21 +24,29 @@ function Cov ({ url, data, params, header, method }) {
     let query = paramsToQuery(params)
     user = userData.get('user') || {}
     header = header || {}
+    // header['content-type'] = 'application/json'
+    header['Content-Type'] = 'application/json'
     header['authorization'] = user.sessionToken
+    method =  method || 'get'
+    if (method === 'patch') method = 'put'
+    method = method.toUpperCase()
     return new Promise((resolve, reject) => {
         wx.request({
           url: baseUrl + url + query,
           data: data,
-          method: method || 'get',
+          method: method,
+          dataType: 'json',
           header: header,
           success (res) {
               if (res.statusCode > 299) {
+                  console.log(res)
                 reject(res)
               } else {
                 resolve(res)
               }
           },
           fail (err) {
+            console.log(err)
             reject(err)
           }
         })

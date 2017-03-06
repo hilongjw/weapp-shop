@@ -9,7 +9,7 @@
                 <view class="weui-cell__hd">
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="手机号" data-key="phone" bindinput="syncInputValue" value="{{phone}}"/>
+                    <input type="number" class="weui-input" placeholder="手机号" data-key="phone" bindinput="syncInputValue" value="{{phone}}"/>
                 </view>
             </view>
         </view>

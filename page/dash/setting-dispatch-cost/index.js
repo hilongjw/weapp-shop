@@ -5,8 +5,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shop = userData.get('shop') || {}
-const shopId = shop._id
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 let page = {
   data:{
@@ -34,6 +34,9 @@ let page = {
     })
   },
   save () {
+    shop = userData.get('shop') || {}
+    shopId = shop._id
+    console.log('save cost', this.data.cost)
     Cov({
       url: '/api/shop/' + shopId,
       method: 'patch',
@@ -42,7 +45,11 @@ let page = {
       }
     })
     .then(res => {
+      console.log(res)
       wx.navigateBack()
+    })
+    .catch(e => {
+      console.log(e)
     })
   },
   syncInputValue (e) {

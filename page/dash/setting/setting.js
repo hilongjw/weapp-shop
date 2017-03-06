@@ -8,49 +8,26 @@ const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 
 const shopDefault = {
-  logo: 'http://77wdm6.com1.z0.glb.clouddn.com/poster.png',
-  name: '纯享有机生活超市',
+  logo: '',
+  name: '',
   address: '',
-  addressDetail: '建外SOHO西区12号楼1704',
+  addressDetail: '',
   status: '营业中',
   dispatchTimeStart: '8:00',
   dispatchTimeEnd: '24:00',
-  phone: '13800138000',
+  phone: '',
   dispatchCost: 0,
   dispatchStart: 0
 }
 
 let app = {
   data:{
-    shop: {
-      logo: 'http://77wdm6.com1.z0.glb.clouddn.com/poster.png',
-      name: '纯享有机生活超市',
-      address: '',
-      addressDetail: '建外SOHO西区12号楼1704',
-      status: '营业中',
-      dispatchTimeStart: '8:00',
-      dispatchTimeEnd: '24:00',
-      phone: '13800138000',
-      dispatchCost: 0,
-      dispatchStart: 0
-    }
+    shop: {}
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    console.log('setting show')
+  onShow:function() {
     this.setTabBarActive('shop')
-    this.init()
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+    console.log()
+    this.init('setting ----- shop')
   },
   init () {
     this.loadShop()

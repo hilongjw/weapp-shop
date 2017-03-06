@@ -52,6 +52,7 @@
     font-size: 34rpx;
     color: #000000;
     letter-spacing: 0;
+    overflow: hidden;
 }
 .dash-setting-cell.help {
     margin-top: 40rpx;

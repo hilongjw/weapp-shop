@@ -119,6 +119,7 @@ App({
               this.globalData.token = data.sessionToken
               this.globalData.userId = data._id
               if (data.role === 'merchant' && data.shop) {
+                this.loadShop()
                 wx.redirectTo({
                   url: '/page/dash/setting/setting'
                 })

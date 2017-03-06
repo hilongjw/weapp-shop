@@ -2,6 +2,38 @@ var WxParse = require('../../../vendor/wxParse/wxParse.js')
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 
+var help = `
+# 这个店帮助文档
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+
+## 这个店帮助文档
+
+这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，这个店帮助文档这个店帮助文档，
+`
+
 Page({
   data:{
   },
@@ -25,8 +57,9 @@ Page({
       url: '/api/article',
       method: 'post',
       data: {
+        alias: 'help',
         title: '帮助',
-        content: article
+        content: help
       }
     })
     .then(res => {
@@ -37,11 +70,12 @@ Page({
     Cov({
       url: '/api/article',
       params: {
-        title: '帮助'
+        alias: 'help'
       }
     })
     .then(res => {
       let articles = res.data
+      console.log(res)
       if (!articles.length) return
       wx.setNavigationBarTitle({
         title: articles[0].title
