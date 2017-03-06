@@ -12,7 +12,11 @@ const geoHash = require('../../../vendor/geo-hash.js')
 Page({
   data:{
     distance: '',
-    order: {}
+    order: {
+      addressDetail: '',
+      address: '',
+      address: {}
+    }
   },
   onLoad:function(options){
     if (options.id) {
@@ -119,7 +123,7 @@ Page({
         duration: 2000
       })
       let order = this.data.order
-      order.status = 'sending'
+      order.status = 'cancel'
       this.setData({
         order: order
       })

@@ -86,7 +86,9 @@ Page({
   },
   createOrder (formId) {
     const detail = this.data.productList
- 
+    const shop = userData.get('shop') || {}
+    const shopId = shop._id
+    if (!shopId) return wx.navigateBack()
     Cov({
       url: '/api/order',
       method: 'post',
@@ -95,7 +97,7 @@ Page({
         mark: this.data.form.remark,
         dispatchAt: this.data.form.dispatchTime,
         detail: detail,
-        shop: this.data.shopId,
+        shop: shopId,
         formId: formId
       }
     })
