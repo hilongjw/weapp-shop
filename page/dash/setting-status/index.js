@@ -30,7 +30,6 @@ let page = {
     if (!shop.status) return
 
     statusList.forEach(op => {
-      console.log(op.key, shop.status, op.key === shop.status)
       if (op.key === shop.status) {
         op.active = true
       }

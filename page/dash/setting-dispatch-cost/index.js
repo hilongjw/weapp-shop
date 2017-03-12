@@ -15,17 +15,8 @@ let page = {
   onLoad:function(options){
     
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
   onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+    this.init()
   },
   init () {
     const shop = userData.get('shop') || {}
@@ -36,7 +27,6 @@ let page = {
   save () {
     shop = userData.get('shop') || {}
     shopId = shop._id
-    console.log('save cost', this.data.cost)
     Cov({
       url: '/api/shop/' + shopId,
       method: 'patch',
@@ -45,11 +35,7 @@ let page = {
       }
     })
     .then(res => {
-      console.log(res)
       wx.navigateBack()
-    })
-    .catch(e => {
-      console.log(e)
     })
   },
   syncInputValue (e) {

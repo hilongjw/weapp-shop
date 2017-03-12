@@ -1,5 +1,6 @@
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
+const formatDate = require('../../../util/util.js').formatDate
 
 Page({
   data:{
@@ -17,6 +18,10 @@ Page({
   onLoad:function(options){
     if (options.id) {
       this.initOrder(options.id)
+    } else {
+      wx.redirectTo({
+        url: '/page/shop/list/list/'
+      })
     }
   },
   initOrder (id) {
@@ -28,6 +33,7 @@ Page({
     })
     .then(res => {
       let order = res.data
+      order.createdAtText = formatDate(order.createdAt)
       this.setData({
         order: order
       })

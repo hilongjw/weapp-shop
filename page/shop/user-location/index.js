@@ -7,6 +7,10 @@ let userId = appInstance.globalData.userId
 
 Page({
   data:{
+    current: {
+      address: '',
+      addressDetail: ''
+    },
     locationList: []
   },
   onLoad:function(options){
@@ -18,13 +22,8 @@ Page({
   onShow:function(){
     this.loadLocationList()
   },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
   loadLocationList () {
+    userId = appInstance.globalData.userId
     Cov({
       url: '/api/address',
       params: {
@@ -44,12 +43,18 @@ Page({
       })
 
       this.setData({
-        locationList: res.data
+        current: currentLocation,
+        locationList: locationList
       })
     })
   },
+  navToLocationEdit (e) {
+    let id = this.data.current._id
+    wx.navigateTo({
+        url: '/page/shop/user-location-edit/index'+ (id ? '?id=' + id : '')
+    })
+  },
   chooseLocation (e) {
-    console.log(e)
     const index = e.currentTarget.dataset.index
     const locationList = this.data.locationList
     let location = locationList[index]
@@ -60,9 +65,7 @@ Page({
     userData.set('locationList', locationList)
     userData.set('currentLocation', location)
 
-    wx.redirectTo({
-      url: '/page/shop/pre-order/index' 
-    })
+    wx.navigateBack()
   },
   navToLocation (e) {
     wx.navigateTo({

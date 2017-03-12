@@ -1,4 +1,9 @@
 <view class="user-location">
+     <view class="weui-cells__title">当前地址</view>
+     <view class="user-location-current" bindtap="navToLocationEdit">
+        {{current.address}}
+        <view class="navigator-arrow"></view>
+     </view>
     <view class="weui-cells__title">配送地址</view>
     <view class="user-location-list">
         <view 

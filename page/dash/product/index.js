@@ -101,8 +101,12 @@ let app = {
             }
         })
         .then(res => {
+            let list = [{
+                name: '全部'
+            }]
+            list = list.concat(res.data)
             this.setData({
-                categoryList: res.data
+                categoryList: list
             })
         })
     },

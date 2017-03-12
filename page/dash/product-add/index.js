@@ -28,9 +28,6 @@ Page({
       this.init()
     }
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
   onShow:function(){
     this.updateFromCache()
   },
@@ -182,7 +179,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success:  (res) => {
-        console.log(res)
         var tempFilePaths = res.tempFilePaths
         product.images = images.concat(tempFilePaths)
         this.data.locked = false

@@ -8,22 +8,10 @@ Page({
     skip: 0,
     orderList: []
   },
-  onLoad:function(options){
-    
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
   onShow:function(){
     userId = appInstance.globalData.userId
     this.data.skip = 0
     this.loadData()
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
   },
   onPullDownRefresh () {
     this.data.skip = 0

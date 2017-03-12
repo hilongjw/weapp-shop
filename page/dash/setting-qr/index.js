@@ -1,34 +1,39 @@
 const CovData = require('../../../util/util.js').CovData
 const userData = new CovData('user')
-const shop = userData.get('shop') || {}
+
 const config = require('../../../config.js')
 const host = config.host
-const qrUrl = '/api/qr/path?path=/page/shop/lobby/lobby?id='
+const qrUrl = '/page/shop/lobby/lobby?id='
+
+const appInstance = getApp()
+const Cov = appInstance.globalData.Cov
 
 Page({
   data:{
-    qrImage: host + qrUrl + shop._id
+    qrImage: ''
   },
   onLoad (options) {
- 
+    this.init()
   },
-  onReady:function(){
-    
-  },
-  onShow:function(){
-    
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-
-  onUnload:function(){
-    // 页面关闭
-
+  init () {
+    const shop = userData.get('shop') || {}
+    const shopId = shop._id
+    Cov({
+      url: '/api/qr/path',
+      params: {
+        path: qrUrl + shopId
+      }
+    })
+    .then(res => {
+      let link = res.data.link
+      this.setData({
+        qrImage: link
+      })
+    })
   },
   previewImg (e) {
     const img = this.data.qrImage
+    console.log(img)
     wx.previewImage({
       current: img, // 当前显示图片的http链接
       urls: [img] // 需要预览的图片http链接列表

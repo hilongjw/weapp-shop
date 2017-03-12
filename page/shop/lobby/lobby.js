@@ -12,15 +12,13 @@ Page({
     data: {
         viewShow: 'product',
         shop: {
-            id: 1,
-            cover: 'http://77wdm6.com1.z0.glb.clouddn.com/poster.png',
-            name: '纯享有机生活超市',
-            phone: '13800138000',
-            address: '朝阳区通惠家园惠润园6号楼108',
+            cover: '',
+            name: '',
+            phone: '',
+            address: '',
             dispatchCost: 0,
             dispatchStart: 0,
-            dispatchType: '商家配送',
-            dispatchTime: '8:00 - 23:00'
+            dispatchType: '商家配送'
         },
         topTabNav: [{
             key: 'product',
@@ -162,22 +160,19 @@ Page({
         }
         return product
     },
-    getCartByIndex (id) {
-
-    },
     addProductCount (e) {
         if (this.data.shop.status !== 'open') return
         const product = this.getProductById(e)
         if (!product.count) product.count = 0
         product.count++
-        this.updateProductCount()
+        this.addProduct(product)
     },
     reduceProductCount (e) {
         const product = this.getProductById(e)
         if (!product.count) product.count = 1
         product.count--
         if (product.count < 0) product.count = 0
-        this.updateProductCount()
+        this.reduceProduct(product)
     },
     productDetail (e) {
         const product = this.getProductById(e)
@@ -189,24 +184,62 @@ Page({
             }
         })
     },
-    updateProductCount () {
-        const productList = this.data.productList
-        let cartPrice = 0
-        let cartCount = 0
-        const cartList = productList.filter(product => {
-            if (product.count) {
-                cartCount += product.count
-                cartPrice += product.count * product.price
+    addProduct (product) {
+        const cartQueue = this.data.cartQueue
+        cartQueue.push(product)
+
+        this.updateProductCount()
+    },
+    reduceProduct (product) {
+        const cartQueue = this.data.cartQueue
+
+        for (let i = cartQueue.length - 1 ; i > -1; i--) {
+            if (cartQueue[i]._id === product._id) {
+                cartQueue.splice(i, 1)
+                break
             }
-            return product.count
+        }
+        this.updateProductCount()
+    },
+    getCartQueue () {
+        let product
+        let idMap = {}
+        let list = []
+        let tmp
+        let cartQueue = this.data.cartQueue
+        let count = cartQueue.length
+        let price = 0
+
+        cartQueue.map(pd => {
+            price += pd.price
+            if (idMap[pd._id]) {
+                tmp = list.find(cart => cart._id === pd._id)
+                tmp.count++
+            } else {
+                idMap[pd._id] = 1
+                list.push({
+                    _id: pd._id,
+                    name: pd.name,
+                    count: 1,
+                    price: pd.price
+                })
+            }
         })
-        
-        cartPrice = cartPrice.toFixed(2)
+
+        return {
+            total: price.toFixed(2),
+            count: count,
+            cartList: list
+        }
+    },
+    updateProductCount () {
+        const cart = this.getCartQueue()
+        const productList = this.data.productList
 
         this.setData({
-            cartCount: cartCount,
-            cartPrice: cartPrice,
-            cartList: cartList,
+            cartCount: cart.count,
+            cartPrice: cart.total,
+            cartList: cart.cartList,
             productList: productList
         })
     },
@@ -282,6 +315,24 @@ Page({
             productNormsPop: productNormsPop
         })
     },
+    productNormFormat (product) {
+        let normsText = ''
+
+        product.norms.map(n => {
+            n.options.map(op => {
+                if (op.active) {
+                    normsText += n.title + ': ' + op.text + ' '
+                    // norms.push({
+                    //     title: n.title,
+                    //     value: op.text
+                    // })
+                }
+            })
+        })
+
+        return normsText
+
+    },
     addNormCount (e) {
         const productNormsPop = this.data.productNormsPop
         if (!productNormsPop.product.count)productNormsPop.product.count = 0
@@ -291,7 +342,13 @@ Page({
         this.setData({
             productNormsPop: productNormsPop
         })
-        this.addProductCount(e)
+        const product = this.getProductById(e)
+        if (!product.count) product.count = 0
+        product.count++
+
+        // console.log(productNormsPop.product)
+        productNormsPop.product.normsText = this.productNormFormat(productNormsPop.product)
+        this.addProduct(productNormsPop.product)
     },
     reduceNormCount (e) {
         const productNormsPop = this.data.productNormsPop
@@ -303,7 +360,11 @@ Page({
         this.setData({
             productNormsPop: productNormsPop
         })
-        this.reduceProductCount(e)
+        const product = this.getProductById(e)
+        if (!product.count) product.count = 1
+        product.count--
+        if (product.count < 0) product.count = 0
+        this.reduceProduct(productNormsPop.product)
     },
     navToPreOrder () {
         const cartPrice = this.data.cartPrice
@@ -318,7 +379,10 @@ Page({
             })
         }
         if (this.data.cartPrice)
-        userData.set('cartList', this.data.cartList)
+        userData.set('shopCart', {
+            cartList: this.data.cartList,
+            cartQueue: this.data.cartQueue,
+        })
         wx.navigateTo({
             url:'/page/shop/pre-order/index?id=' + this.data.shop._id
         })

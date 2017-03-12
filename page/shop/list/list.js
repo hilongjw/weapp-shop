@@ -16,17 +16,8 @@ Page({
     userId = appInstance.globalData.userId
     this.init()
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+  onShow () {
+    this.initCurrentLocation()
   },
   init () {
     Cov({
@@ -50,34 +41,41 @@ Page({
       }
     })
     .then(res => {
-      let shopList = this.data.shopList
       this.setData({
-        nearList: shopList
+        nearList: res.data
       })
     })
   },
-  navToLocation () {
-    wx.chooseLocation({
-      success: (res) => {
-        const hash = geoHash.encode(res.latitude, res.longitude)
-        console.log(hash)
-        this.nearByShop(hash.substr(0,6))
-        this.setData({
-            currentLocation: {
-              latitude: res.latitude,
-              longitude: res.longitude,
-              address: res.address + res.name,
-              geoHash: hash
-            }
-        })
-      },
-      fail (err) {
-        console.log(err)
-      },
-      cancel (err) {
-        console.log(err)
-      }
+  initCurrentLocation () {
+    const currentLocation = userData.get('currentLocation') || {}
+    this.setData({
+      currentLocation: currentLocation
     })
+  },
+  navToLocation () {
+    wx.navigateTo({
+        url: '/page/shop/user-location/index'
+    })
+    // wx.chooseLocation({
+    //   success: (res) => {
+    //     const hash = geoHash.encode(res.latitude, res.longitude)
+    //     this.nearByShop(hash.substr(0,6))
+    //     this.setData({
+    //         currentLocation: {
+    //           latitude: res.latitude,
+    //           longitude: res.longitude,
+    //           address: res.address + res.name,
+    //           geoHash: hash
+    //         }
+    //     })
+    //   },
+    //   fail (err) {
+    //     console.log(err)
+    //   },
+    //   cancel (err) {
+    //     console.log(err)
+    //   }
+    // })
   },
   navToShop (e) {
     const id = e.currentTarget.dataset.id

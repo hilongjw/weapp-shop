@@ -6,6 +6,7 @@ const userData = new CovData('user')
 const Cov = appInstance.globalData.Cov
 const shop = userData.get('shop') || {}
 const shopId = shop._id
+const formatDate = require('../../../util/util.js').formatDate
 
 let app = {
   data:{
@@ -38,21 +39,9 @@ let app = {
   onPullDownRefresh: function(){
     this.loadOrder()
   },
-  onLoad:function(options){
-    // this.loadOrder('sending')
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
   onShow:function(){
     this.setTabBarActive('order')
     this.loadOrder()
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
   },
   loadOrder (add) {
     if (this.data.status.loading || this.data.status.ended) return
@@ -65,17 +54,23 @@ let app = {
       wx.stopPullDownRefresh()
       this.data.status.loading = false
       if (!res.data || !res.data.length) {
-        this.data.status.ended = true
+        return this.data.status.ended = true
       }
+      let list = res.data
+      list = list.map(od => {
+        od.createdAtText = formatDate(od.createdAt)
+        return od
+      })
+
       if (add) {
         let orderList = this.data.orderList
-        orderList = orderList.concat(res.data)
+        orderList = orderList.concat(list)
         this.setData({
           orderList: orderList
         })
       } else {
         this.setData({
-          orderList: res.data
+          orderList: list
         })
       }
     })
@@ -96,7 +91,6 @@ let app = {
       this.data.params.status = topTabNav[index].key  
       this.data.params.skip = 0
       this.data.status.ended = false
-      console.log(this.data.params)
       this.loadOrder()
   },
   navToDetail (e) {

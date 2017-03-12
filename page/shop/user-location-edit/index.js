@@ -5,7 +5,6 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-console.log('233', appInstance)
 const geoHash = require('../../../vendor/geo-hash.js')
 
 let page = {
@@ -94,6 +93,7 @@ let page = {
         icon: 'success',
         duration: 2000
       })
+      userData.set('currentLocation', res.data)
       wx.navigateBack()
     })
   },

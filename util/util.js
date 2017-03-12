@@ -30,6 +30,20 @@ function formatLocation(longitude, latitude) {
   }
 }
 
+function pad (num) {
+  if (num < 10) {
+    return '0' + num
+  }
+  return '' + num
+}
+
+function formatDate (date) {
+  let time = new Date(date)
+  let result = [pad(time.getFullYear()), pad(time.getMonth()+1), pad(time.getDate())].join('-') + ' '
+  result += [pad(time.getHours()), pad(time.getMinutes()), pad(time.getSeconds())].join(':')
+  return result
+}
+
 function CovData (name) {
   this.name = name
 }
@@ -50,5 +64,6 @@ CovData.prototype.set = function (key, value) {
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
-  CovData: CovData
+  CovData: CovData,
+  formatDate: formatDate
 }

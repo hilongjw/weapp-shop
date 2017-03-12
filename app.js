@@ -8,14 +8,7 @@ const userData = new CovData('user')
 
 App({
   onLaunch: function () {
-    console.log('App Launch', this)
     this.login()
-  },
-  onShow: function () {
-    console.log('App Show', this)
-  },
-  onHide: function () {
-    console.log('App Hide')
   },
   globalData: {
     logining: false,

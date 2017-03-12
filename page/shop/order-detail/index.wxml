@@ -43,7 +43,7 @@
                     交易时间
                 </view>
                 <view class="shop-order-detail-bd-val">
-                    {{ order.createdAt }}
+                    {{ order.createdAtText }}
                 </view>
             </view>
             <view class="shop-order-detail-bd-row">
@@ -59,6 +59,6 @@
     <view class="weui-btn-area">
         <button class="weui-btn" bindtap="callShop" type="primary" >呼叫商家</button>
         <button class="weui-btn" bindtap="cancelOrderAction"  wx:if="{{order.status === 'wait' || order.status === 'sending' }}" >取消订单</button>
-        <button class="weui-btn" bindtap="navToShop" wx:if="{{order.status === 'done'}}" >再来订单</button>
+        <button class="weui-btn" bindtap="navToShop" wx:if="{{order.status === 'done'}}" >再来一单</button>
     </view>
 </view>

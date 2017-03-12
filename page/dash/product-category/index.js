@@ -11,23 +11,10 @@ let app = {
   data: {
     categoryList: []
   },
-  onLoad (options) {
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady () {
-    // 页面渲染完成
-  },
   onShow () {
     this.init()
   },
-  onHide () {
-    // 页面隐藏
-  },
-  onUnload () {
-    
-  },
   dragHookEnd (item, list) {
-    console.log(item, list)
     this.diffIndex(list, true)
   },
   diffIndex (newList, save) {

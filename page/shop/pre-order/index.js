@@ -30,6 +30,7 @@ Page({
   onShow:function(){
     let locationList = userData.get('locationList') || []
     const currentLocation = userData.get('currentLocation')
+
     this.initCartList()
     if (!locationList.length || !currentLocation) {
       let form = this.data.form
@@ -46,9 +47,18 @@ Page({
     })
   },
   initCartList () {
-      const cartList = userData.get('cartList') || []    
+      const shopCart = userData.get('shopCart') || {}
+      const cartQueue = shopCart.cartQueue
+      const cartList = shopCart.cartList
       const shop = userData.get('shop') || {}
       const form = this.data.form
+
+      if (!cartQueue || !cartList || !shop._id) {
+        return wx.redirectTo({
+          url: '/page/shop/list/list'
+        })
+      }
+
       let total = shop.dispatchCost || 0
 
       cartList.forEach(item => {
@@ -60,6 +70,7 @@ Page({
       this.setData({
           form: form,
           productList: cartList,
+          cartQueue: cartQueue,
       })
   },
   syncInputValue (e) {
@@ -85,6 +96,7 @@ Page({
     })
   },
   createOrder (formId) {
+    const queue = this.data.cartQueue
     const detail = this.data.productList
     const shop = userData.get('shop') || {}
     const shopId = shop._id
@@ -97,6 +109,7 @@ Page({
         mark: this.data.form.remark,
         dispatchAt: this.data.form.dispatchTime,
         detail: detail,
+        queue: queue,
         shop: shopId,
         formId: formId
       }

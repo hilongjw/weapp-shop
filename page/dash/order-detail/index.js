@@ -6,6 +6,7 @@ const shop = userData.get('shop') || {}
 const shopId = shop._id
 const shopGeoHash = shop.geoHash
 
+const formatDate = require('../../../util/util.js').formatDate
 const getDistance = require('../../../vendor/get-distance.js')
 const geoHash = require('../../../vendor/geo-hash.js')
 
@@ -44,8 +45,11 @@ Page({
     })
     .then(res => {
       this.calcDistance(res.data.address.geoHash)
+      let order = res.data
+
+      order.createdAtText = formatDate(order.createdAt)
       this.setData({
-        order: res.data
+        order: order
       })
     })
   },

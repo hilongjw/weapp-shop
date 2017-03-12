@@ -49,7 +49,7 @@
                 下单时间
             </view>
             <view class="ts-cell-val">
-                2017年2月11日 12:23
+                {{order.createdAtText}}
             </view>
         </view>
 

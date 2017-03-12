@@ -59,7 +59,7 @@
                         下单时间：
                     </view>
                     <view>
-                        {{item.createdAt}}
+                        {{item.createdAtText}}
                     </view>
                 </view>
             </view>
