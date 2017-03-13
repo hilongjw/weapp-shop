@@ -2,9 +2,7 @@ const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const CovData = require('../../../util/util.js').CovData
 const userData = new CovData('user')
-const shop = userData.get('shop') || {}
-const shopId = shop._id
-const shopGeoHash = shop.geoHash
+let shop = userData.get('shop') || {}
 
 const formatDate = require('../../../util/util.js').formatDate
 const getDistance = require('../../../vendor/get-distance.js')
@@ -24,18 +22,6 @@ Page({
       this.init(options.id)
     }
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
   init (id) {
     Cov({
       url: '/api/order/' + id,
@@ -54,6 +40,8 @@ Page({
     })
   },
   calcDistance (userHash) {
+    shop = userData.get('shop') || {}
+    const shopGeoHash = shop.geoHash
     let shop = geoHash.decode(shopGeoHash)
     let user = geoHash.decode(userHash)
 
