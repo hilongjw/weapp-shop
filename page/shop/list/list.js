@@ -48,6 +48,9 @@ Page({
   },
   initCurrentLocation () {
     const currentLocation = userData.get('currentLocation') || {}
+    if (currentLocation.geoHash) {
+      this.nearByShop(currentLocation.geoHash)
+    }
     this.setData({
       currentLocation: currentLocation
     })
@@ -56,26 +59,6 @@ Page({
     wx.navigateTo({
         url: '/page/shop/user-location/index'
     })
-    // wx.chooseLocation({
-    //   success: (res) => {
-    //     const hash = geoHash.encode(res.latitude, res.longitude)
-    //     this.nearByShop(hash.substr(0,6))
-    //     this.setData({
-    //         currentLocation: {
-    //           latitude: res.latitude,
-    //           longitude: res.longitude,
-    //           address: res.address + res.name,
-    //           geoHash: hash
-    //         }
-    //     })
-    //   },
-    //   fail (err) {
-    //     console.log(err)
-    //   },
-    //   cancel (err) {
-    //     console.log(err)
-    //   }
-    // })
   },
   navToShop (e) {
     const id = e.currentTarget.dataset.id
