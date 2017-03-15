@@ -82,7 +82,7 @@
         </scroll-view>
 
         <!--product-list-->
-        <scroll-view class="product-list" scroll-y="true">
+        <scroll-view upper-threshold="50" class="product-list" scroll-y="true" bindscrolltolower="loadMoreProduct">
             <view
                 wx:for="{{productList}}"
                 wx:key="{{item._id}}"
@@ -118,6 +118,9 @@ bindtap="addProductCount"></image>
                          </view>
                     </view>
                 </view>
+            </view>
+            <view class="shop-product-loading">
+                <text wx:if="{{productLoading}}">努力加载中...</text>    
             </view>
         </scroll-view>
     </view>

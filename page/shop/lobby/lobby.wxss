@@ -67,7 +67,6 @@
 }
 .shop-list-view {
     display: flex;
-    height: 800rpx;
 }
 .category-list {
     height: 950rpx;
@@ -91,6 +90,8 @@
     width: 590rpx;
     height: 950rpx;
     background: #fff;
+    padding-bottom: 500rpx;
+    /*box-sizing: border-box;*/
 }
 .product-list-item {
     position: relative;
@@ -98,6 +99,16 @@
     padding: 30rpx;
     background: #FFFFFF;
     box-shadow: inset 0 -1px 0 0 #E5E5E5;
+}
+.shop-product-loading {
+    position:relative;
+    padding:20rpx;
+    background:#FFFFFF;
+    text-align:center;
+    width:100%;
+    font-size:26rpx;
+    color: #8d8d8d;
+    box-sizing:border-box;
 }
 .product-list-cover {
     height: 120rpx;

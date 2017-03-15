@@ -14,7 +14,7 @@
           </view>
           <view class="weui-cell__bd">
             <picker mode="time" bindchange="bindPickerChange">
-              <view class="weui-input">{{form.dispatchTime}}</view>
+              <view class="weui-input">{{form.dispatchTime ? form.dispatchTime : '立即配送'}}</view>
             </picker>
           </view>
         </view>

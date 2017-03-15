@@ -11,6 +11,7 @@ Page({
     },
     data: {
         viewShow: 'product',
+        productLoading: false,
         shop: {
             cover: '',
             name: '',
@@ -29,6 +30,12 @@ Page({
             text: '商家',
             active: false
         }],
+        productParams: {
+            skip: 0,
+            limit: 6,
+            shop: '',
+            category: undefined
+        },
         popMask: false,
         popCart: false,
         productNormsPop: {
@@ -70,8 +77,9 @@ Page({
             icon: 'loading'
         })
         this.initCategory(shopId)
-        this.initProduct(shopId)
+        this.data.productParams.shop = shopId
         this.initShop(shopId)
+        this.loadMoreProduct()
     },
     navToWelcome (id) {
         wx.redirectTo({
@@ -99,18 +107,24 @@ Page({
             })
         })
     },
-    initProduct (id, category) {
+    loadMoreProduct () {
+        this.setData({
+            productLoading: true
+        })
         Cov({
             url: '/api/product/',
-            params: {
-                shop: id,
-                category: category
-            }
+            params: this.data.productParams
         })
         .then(res => {
             wx.hideToast()
             this.setData({
-                productList: res.data
+                productLoading: false
+            })
+            let productList = this.data.productList
+            productList = productList.concat(res.data)  
+            this.data.productParams.skip += 10
+            this.setData({
+                productList: productList
             })
         })
     },
@@ -122,8 +136,13 @@ Page({
             }
         })
         .then(res => {
+            let list = [{
+                name: '全部',
+                active: true
+            }]
+            list = list.concat(res.data)
             this.setData({
-                categoryList: res.data
+                categoryList: list
             })
         })
     },
@@ -144,7 +163,12 @@ Page({
             list[i].active = false
         }
         list[index].active = true
-        this.initProduct(this.data.shopId, list[index]._id)
+
+        this.data.productParams.shop = this.data.shopId
+        this.data.productParams.category = list[index]._id
+        this.data.productParams.skip = 0
+        this.data.productList = []
+        this.loadMoreProduct()
         this.setData({
             categoryList: list
         })
