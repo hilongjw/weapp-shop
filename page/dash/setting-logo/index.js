@@ -9,14 +9,14 @@ const updloadImageList = appInstance.globalData.updloadImageList
 Page({
   data:{
     shop: {
-      logo: 'http://77wdm6.com1.z0.glb.clouddn.com/poster.png',
-      name: '纯享有机生活超市',
+      logo: '',
+      name: '',
       address: '',
-      addressDetail: '建外SOHO西区12号楼1704',
-      status: '营业中',
+      addressDetail: '',
+      status: '',
       dispatchTimeStart: '8:00',
       dispatchTimeEnd: '24:00',
-      phone: '13800138000',
+      phone: '',
       dispatchCost: 0,
       dispatchStart: 0
     }

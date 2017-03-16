@@ -82,6 +82,15 @@
     text-align: center;
     line-height: 100rpx;
 }
+.category-list-item-empty {
+    width: 160rpx;
+    height: 100rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #181818;
+    text-align: center;
+    line-height: 100rpx;
+}
 .category-list-item.active {
     color: #1AAE18;
     background: #fff;
@@ -147,6 +156,7 @@
     font-family: PingFangSC-Regular;
     font-size: 24rpx;
     height: 40rpx;
+    line-height: 40rpx;
     color: #FFFFFF;
     padding: 5rpx 26rpx;
     background: #1AAE18;
@@ -443,4 +453,11 @@
     font-size: 34rpx;
     color: #888888;
     letter-spacing: 0;
+}
+.lobby-shop-address {
+    display: block;
+    overflow: hidden;
+    padding-right: 20rpx;
+    white-space: nowrap;
+    text-overflow:ellipsis;
 }

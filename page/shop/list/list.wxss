@@ -7,6 +7,7 @@
     position: relative;
     background: #FFFFFF;
     padding: 24rpx 0;
+    box-sizing: border-box;
 }
 .shop-list-location .navigator-arrow {
     position: absolute;
@@ -24,6 +25,11 @@
     font-size: 28rpx;
     color: #1AAE18;
     margin: 0 15rpx;
+    display: block;
+    padding-right: 60rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
 }
 .lobby-list-item {
     position: relative;

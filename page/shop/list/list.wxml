@@ -29,6 +29,7 @@
             </view>
             <view class="navigator-arrow"></view>
         </view>
+
     </view>
 
         <view class="weui-cells__title" wx:if="{{nearList.length}}">附近的店</view>
@@ -45,7 +46,8 @@
                     {{item.name}}
                 </view>
                 <view class="lobby-list-item-row">
-                    <image src="http://77wdm6.com1.z0.glb.clouddn.com/free_green.svg" class="lobby-list-item-row-icon"></image> {{ item.dispathCost ? item.dispathCost + '元' : '免运费'}}
+                    <image src="http://77wdm6.com1.z0.glb.clouddn.com/free_green.svg" class="lobby-list-item-row-icon" wx:if="{{ !item.dispatchCost }}"></image>
+                    <image src="http://77wdm6.com1.z0.glb.clouddn.com/dispatch_cost_blue.svg" class="lobby-list-item-row-icon" wx:if="{{ item.dispatchCost }}"></image> {{ item.dispatchCost ? item.dispatchCost + '元' : '免运费'}}
                 </view>
                 <view class="lobby-list-item-row">
                     <image src="http://77wdm6.com1.z0.glb.clouddn.com/time_gray.svg" class="lobby-list-item-row-icon"></image> {{item.dispatchTimeStart + ' - ' + item.dispatchTimeEnd}}
@@ -53,6 +55,6 @@
             </view>
             <view class="navigator-arrow"></view>
         </view>
-        
+
     </view>
 </view>

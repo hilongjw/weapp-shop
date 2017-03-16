@@ -10,6 +10,7 @@ Page({
         this.init(this.data.shopId)
     },
     data: {
+        touch: {},
         viewShow: 'product',
         productLoading: false,
         shop: {
@@ -66,10 +67,42 @@ Page({
             path: '/page/shop/lobby/lobby?id=' + this.data.shop._id
         }
     },
+    handleTouchMove (event) {
+        let currentX = event.touches[0].pageX
+        let currentY = event.touches[0].pageY
+
+        this.data.touch.lastX = currentX
+        this.data.touch.lastY = currentY
+    },
+    handleTouchStart (event) {
+        this.data.touch.start = Date.now()
+        this.data.touch.startX = event.touches[0].pageX
+        this.data.touch.startY = event.touches[0].pageY
+    },
+    handleTouchEnd () {
+        let direct = ''
+
+        if ((this.data.touch.startX - this.data.touch.lastX) < -100)
+        direct = 'left'
+        else if (((this.data.touch.startX - this.data.touch.lastX) > 100))
+        direct = 'right'
+
+        if (direct === 'left') {
+            this.tapTopTabNav(null, 0)
+        } else if (direct === 'right') {
+            this.tapTopTabNav(null, 1)
+        }
+    },
     callShop () {
         if (!this.data.shop || !this.data.shop.phone) return
         wx.makePhoneCall({
             phoneNumber: this.data.shop.phone
+        })
+    },
+    navToMap () {
+        if (!this.data.shop || !this.data.shop.geoHash) return
+        wx.navigateTo({
+          url: '/page/shop/map/map?hash=' + this.data.shop.geoHash
         })
     },
     init (shopId) {
@@ -122,7 +155,7 @@ Page({
             })
             let productList = this.data.productList
             productList = productList.concat(res.data)  
-            this.data.productParams.skip += 10
+            this.data.productParams.skip += 6
             this.setData({
                 productList: productList
             })
@@ -132,7 +165,8 @@ Page({
         Cov({
             url: '/api/category/',
             params: {
-                shop: id
+                shop: id,
+                ascending: 'index'
             }
         })
         .then(res => {
@@ -146,8 +180,8 @@ Page({
             })
         })
     },
-    tapTopTabNav (e) {
-        const index = e.target.dataset.index
+    tapTopTabNav (e, index) {
+        index = index !== undefined ? index : e.currentTarget.dataset.index
         const topTabNav = this.data.topTabNav
         topTabNav.forEach(tab => tab.active = false)
         topTabNav[index].active = true

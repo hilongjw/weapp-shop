@@ -1,4 +1,4 @@
-<view class="shop-view {{ shop.status !== 'open' ? 'unopen' : '' }}">
+<view class="shop-view {{ shop.status !== 'open' ? 'unopen' : '' }}" bindtouchstart = "handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
     <view class="shop-top-info">
         <view class="shop-top-info-item">
             <image  class="shop-top-info-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shopstate_white.svg"></image>
@@ -22,11 +22,11 @@
             wx:for="{{ topTabNav }}" 
             wx:for-index="tabIndex"
             wx:key="{{tabIndex}}" 
+            data-index="{{tabIndex}}"
+            bindtap="tapTopTabNav"
         >
             <text 
                 class="shop-tab-item-text {{item.active ? 'active' : '' }}"
-                data-index="{{tabIndex}}"
-                bindtap="tapTopTabNav"
             >{{ item.text }}</text>
             <view wx:if="{{item.active}}" class="shop-tab-item-light"></view>
         </view>
@@ -40,9 +40,9 @@
             <view class="navigator-arrow"></view>
             <view class="shop-shop-view-cell-border"></view>
         </view>
-        <view class="shop-shop-view-cell">
+        <view class="shop-shop-view-cell" bindtap="navToMap">
             <image class="shop-shop-view-cell-icon" src="http://77wdm6.com1.z0.glb.clouddn.com/shop_location.svg"></image>
-            <view>{{ shop.addressDetail }}</view>
+            <view class="lobby-shop-address">{{ shop.address + shop.addressDetail }}</view>
             <view class="navigator-arrow"></view>
         </view>
 
@@ -79,6 +79,9 @@
                 data-index="{{index}}"
                 bindtap="tapCategory"
             >{{item.name}}</view>
+            <view
+                class="category-list-item-empty"
+            > </view>
         </scroll-view>
 
         <!--product-list-->
@@ -93,6 +96,7 @@
                     src="{{item.cover}}" 
                     class="product-list-cover" 
                     data-id="{{item._id}}"
+                    mode="aspectFill"
                 ></image>
                 <view class="product-list-item-info">
                     <view                          class="product-list-item-title" 
@@ -122,6 +126,9 @@ bindtap="addProductCount"></image>
             <view class="shop-product-loading">
                 <text wx:if="{{productLoading}}">努力加载中...</text>    
             </view>
+            <view class="shop-product-loading"> 
+            </view>
+            
         </scroll-view>
     </view>
     
@@ -155,7 +162,7 @@ bindtap="addProductCount"></image>
         <swiper class="product-pop-cover">
             <block wx:key="{{index}}" wx:for="{{productPop.product.images}}" wx:for-item="image">
                 <swiper-item>
-                <image src="{{image}}" class="product-pop-cover"/>
+                <image mode="aspectFill" src="{{image}}" class="product-pop-cover"/>
                 </swiper-item>
             </block>
         </swiper>

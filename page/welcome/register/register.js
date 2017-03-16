@@ -74,7 +74,7 @@ Page({
         if (this.data.verify > 1) return
 
         clearInterval(this.data.timer)
-        this.data.verify = 10
+        this.data.verify = 60
         this.data.timer = setInterval(() => {
             console.log(this.data.verify)
             if (this.data.verify < 1) {

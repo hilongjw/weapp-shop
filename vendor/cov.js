@@ -66,12 +66,13 @@ function uploadImage ({ url, src, header }) {
                 data = JSON.parse(data)
             } catch (e) {
                 console.log(e)
+                return reject(e)
             }
             res.data = data
             resolve(data.key)
           },
           fail (err) {
-              console.log(err)
+            console.log(err)
             reject(err)
           }
         })

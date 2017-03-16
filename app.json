@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "page/shop/list/list",
     "page/welcome/verify/verify",
     "page/welcome/init/init",
@@ -42,7 +43,7 @@
     "page/shop/user-location-edit/index",
     
     "page/shop/lobby/lobby",
-    
+    "page/shop/map/map",
     "page/shop/order-detail/index",
     "page/shop/order-state/index",
     "page/shop/pre-order/index", 

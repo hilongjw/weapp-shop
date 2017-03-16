@@ -106,6 +106,11 @@ let app = {
   },
   save () {
     if (!this.checkForm()) return
+    wx.showToast({
+      title: '请求发送中',
+      icon: 'loading',
+      duration: 3000
+  })
     updloadImageList(this.data.images)
       .then(list => {
         this.data.form.license = list
@@ -116,6 +121,11 @@ let app = {
         })
       })
       .then(res => {
+        wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 2000
+        })
         this.navToVerify()
       })
   }

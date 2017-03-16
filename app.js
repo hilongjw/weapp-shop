@@ -1,4 +1,5 @@
 const openIdUrl = require('./config').openIdUrl
+require('./vendor/es6-shim.min.js')
 const Cov = require('./vendor/cov.js').Cov
 const updloadImageList = require('./vendor/cov.js').updloadImageList
 
