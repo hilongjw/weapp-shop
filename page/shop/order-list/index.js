@@ -2,9 +2,11 @@ const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const shopId = appInstance.globalData.shopId
 let userId = appInstance.globalData.userId
+const formatDateCommon = require('../../../util/util.js').formatDateCommon
 
 Page({
   data: {
+    formatDateCommon: formatDateCommon,
     skip: 0,
     orderList: []
   },
@@ -21,6 +23,10 @@ Page({
     this.data.skip += 10
     this.loadData(true)
   },
+  orderFormat (order) {
+    order.createdAtText = formatDateCommon(order.createdAt)
+    return order
+  },
   loadData (add) {
     Cov({
       url: '/api/order',
@@ -34,10 +40,11 @@ Page({
     .then(res => {
       wx.stopPullDownRefresh()
       let orderList = this.data.orderList
+      const data = res.data.map(this.orderFormat)
       if (add) {
-        orderList = orderList.concat(res.data)
+        orderList = orderList.concat(data)
       } else {
-        orderList = res.data
+        orderList = data
       }
       this.setData({
         orderList: orderList

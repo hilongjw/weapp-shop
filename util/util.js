@@ -44,6 +44,13 @@ function formatDate (date) {
   return result
 }
 
+function formatDateCommon (date) {
+    let time = new Date(date)
+  let result = [pad(time.getFullYear()), '年',pad(time.getMonth()+1), '月', pad(time.getDate()), '日'].join('')
+
+  return result
+}
+
 function CovData (name) {
   this.name = name
 }
@@ -65,5 +72,6 @@ module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation,
   CovData: CovData,
-  formatDate: formatDate
+  formatDate: formatDate,
+  formatDateCommon: formatDateCommon
 }

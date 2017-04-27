@@ -8,6 +8,7 @@ Page({
     onLoad (options) {
         this.data.shopId = options.id
         this.init(this.data.shopId)
+        this.tryLoadPreOrder()
     },
     data: {
         touch: {},
@@ -60,6 +61,47 @@ Page({
         cartQueue: [],
         categoryList: [],
         productList: []
+    },
+    loadProductStatus (id) {
+        Cov({
+            url: '/api/product/' + id
+        })
+        .then(res => {
+            const product = res.data
+            if (product.stock === 0) {
+                this.removeItemFormCartQueue(id)
+            }
+        })
+        .catch(err => {
+            this.removeItemFormCartQueue(id)
+        })
+    },
+    removeItemFormCartQueue (id) {
+        const cartQueue = this.data.cartQueue
+
+        cartQueue.forEach((item, index) => {
+            if (id === item._id) {
+                cartQueue.spilce(index, 1)
+            }
+        })
+
+        this.updateProductCount()
+    },
+    tryLoadPreOrder () {
+        const preorder = userData.get('will-preorder')
+        if (!preorder) return
+
+        this.setData({
+            cartList: preorder.detail || [],
+            cartQueue: preorder.queue || []
+        })
+
+        this.data.cartList.map(item => {
+            this.loadProductStatus(item._id)
+        })
+
+        this.updateProductCount()
+        userData.set('will-preorder', null)
     },
     onShareAppMessage: function () {
         return {
@@ -139,6 +181,11 @@ Page({
                 title: shop.name
             })
         })
+        .catch(err => {
+            wx.navigateTo({
+                url:'/page/shop/list/list'
+            })
+        })
     },
     loadMoreProduct () {
         this.setData({
@@ -159,6 +206,21 @@ Page({
             this.setData({
                 productList: productList
             })
+            this.updateCountByCart()
+        })
+    },
+    updateCountByCart () {
+        let productList = this.data.productList
+        const cartList = this.data.cartList
+        productList.map(product => {
+            cartList.map(cart => {
+                if (cart._id === product._id) {
+                    product.count = cart.count
+                }
+            })
+        })
+        this.setData({
+            productList: productList
         })
     },
     initCategory (id) {

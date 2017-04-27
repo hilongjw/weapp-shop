@@ -22,6 +22,9 @@ Page({
   onShow:function(){
     this.loadLocationList()
   },
+  backToList () {
+    wx.navigateBack()
+  },
   loadLocationList () {
     userId = appInstance.globalData.userId
     Cov({

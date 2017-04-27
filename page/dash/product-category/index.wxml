@@ -1,6 +1,6 @@
 <view class="dash-product-category">
     <view class="cells-title">
-        分类列表，长按某个分类上下拖动，可调整分类顺序
+        分类列表，可调整分类顺序
     </view>
     <view class="category-list">
         <view 
@@ -14,9 +14,13 @@
         >
             {{item.name}}
             <image 
-            data-index="{{index}}"
-            bindtouchmove="dragMoving"                         bindtouchstart="dragStart"                         bindtouchend="dragEnd"  
-            class="category-item-icon"  src="http://77wdm6.com1.z0.glb.clouddn.com/drag.svg"></image>
+                data-index="{{index}}"
+                bindtouchmove="dragMoving" 
+                bindtouchstart="dragStart" 
+                bindtouchend="dragEnd"  
+                class="category-item-icon" 
+                src="http://77wdm6.com1.z0.glb.clouddn.com/drag.svg"
+            ></image>
             <view class="cell-border"></view>
         </view>
         <view class="category-item-new" bindtap="navToAdd">

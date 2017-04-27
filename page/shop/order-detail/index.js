@@ -1,6 +1,8 @@
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
 const formatDate = require('../../../util/util.js').formatDate
+const CovData = require('../../../util/util.js').CovData
+const userData = new CovData('user')
 
 Page({
   data:{
@@ -78,6 +80,7 @@ Page({
     })
   },
   navToShop () {
+    userData.set('will-preorder', this.data.order)
     wx.redirectTo({
       url: '/page/shop/lobby/lobby?id=' + this.data.order.shop._id
     })

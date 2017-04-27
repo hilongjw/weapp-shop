@@ -23,11 +23,10 @@
         lower-threshold="50"
         bindscrolltolower="loadMore"
     >
-
         <view 
             class="dash-order-item" 
             wx:for="{{orderList}}"
-            wx:key="{{index}}"
+            wx:key="{{item._id}}"
             data-id="{{ item._id }}"
             bindtap="navToDetail"
         >

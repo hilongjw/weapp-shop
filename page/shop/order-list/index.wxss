@@ -16,9 +16,18 @@
     margin-bottom: 30rpx;
 }
 .order-list-item-hd {
+    position: relative;
     display: flex;
     padding: 24rpx 30rpx;
     border-bottom: 1rpx solid #E5E5E5;
+}
+.order-list-item-status {
+    position: absolute;
+    right: 20px;
+    font-size: 26rpx;
+    color:#1AAE18;
+    letter-spacing: 0;
+    line-height: 56rpx;
 }
 .order-list-item-title {
     font-family: PingFangSC-Regular;

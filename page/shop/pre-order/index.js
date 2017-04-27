@@ -80,7 +80,6 @@ Page({
     this.setData({
         form: form
     })
-    console.log(form)
   },
   bindPickerChange (e) {
     const value = e.detail.value
@@ -96,7 +95,13 @@ Page({
     })
   },
   createOrder (formId) {
-    const queue = this.data.cartQueue
+    const queue = this.data.cartQueue.map(product => {
+      return {
+        _id: product._id,
+        price: product.price,
+        normsText: product.normsText
+      }
+    })
     const detail = this.data.productList
     const shop = userData.get('shop') || {}
     const shopId = shop._id

@@ -38,6 +38,9 @@
     padding: 24rpx 30rpx;
     border-bottom: 1rpx solid #E5E5E5;
 }
+.lobby-list-item-empty {
+    font-size: 28rpx;
+}
 .lobby-list-item .navigator-arrow {
     position: absolute;
     top: 50%;

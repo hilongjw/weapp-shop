@@ -19,6 +19,7 @@
 .user-location-item {
     position: relative;
     padding: 31rpx 86rpx 31rpx 110rpx;
+    overflow: hidden;
 }
 .user-location-selected {
     position: absolute;

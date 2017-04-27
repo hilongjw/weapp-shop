@@ -1,6 +1,10 @@
 <view class="user-location">
      <view class="weui-cells__title">当前地址</view>
-     <view class="user-location-current" bindtap="navToLocationEdit">
+     <view 
+        class="user-location-current" 
+        bindtap="navToLocationEdit"
+        data-id="{{current._id}}"
+    >
         {{current && current.address ? current.address : '请选择配送地址'}}
         <view class="navigator-arrow"></view>
      </view>

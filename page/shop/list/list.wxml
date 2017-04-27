@@ -8,7 +8,12 @@
     </view>
     <view class="weui-cells__title">买过的店</view>
     <view class="lobby-list">
-
+        <view class="lobby-list-item" bindtap="navToLocation" wx:if="{{!shopList.length}}">
+            <view class="lobby-list-item-empty" >
+                暂时还没有买过店，看看附近的店
+            </view>
+            <view class="navigator-arrow"></view>
+        </view>
         <view class="lobby-list-item" 
         wx:for="{{ shopList }}"
         wx:key="{{ item._id }}" 

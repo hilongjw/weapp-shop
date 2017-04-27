@@ -53,8 +53,8 @@ let app = {
     .then(res => {
       wx.stopPullDownRefresh()
       this.data.status.loading = false
-      if (!res.data || !res.data.length) {
-        return this.data.status.ended = true
+      if (!res.data.length) {
+        this.data.status.ended = true
       }
       let list = res.data
       list = list.map(od => {
@@ -72,6 +72,7 @@ let app = {
         this.setData({
           orderList: list
         })
+        console.log(this.data.orderList)
       }
     })
   },

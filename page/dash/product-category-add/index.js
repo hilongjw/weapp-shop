@@ -5,8 +5,8 @@ const userData = new CovData('user')
 
 const appInstance = getApp()
 const Cov = appInstance.globalData.Cov
-const shop = userData.get('shop') || {}
-const shopId = shop._id
+let shop = userData.get('shop') || {}
+let shopId = shop._id
 
 let page = {
   data: {
@@ -21,6 +21,8 @@ let page = {
     // 页面渲染完成
   },
   onShow:function(){
+    shop = userData.get('shop') || {}
+    shopId = shop._id
   },
   onHide:function(){
     // 页面隐藏

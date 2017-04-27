@@ -21,7 +21,7 @@ Page({
   },
   init () {
     Cov({
-      url: '/api/shop',
+      url: '/api/shop/last',
       params: {
         open: true
       }
@@ -30,6 +30,14 @@ Page({
       this.setData({
         shopList: res.data
       })
+    })
+  },
+  findNearShop () {
+    wx.chooseLocation({
+      success: (res) => {
+        const hash = geoHash.encode(res.latitude, res.longitude)
+        this.nearByShop(hash)
+      }
     })
   },
   nearByShop (hash) {
@@ -44,6 +52,12 @@ Page({
       this.setData({
         nearList: res.data
       })
+      if (!res.data.length) {
+        wx.showToast({
+          title: '附近暂时还没店铺',
+          duration: 2000
+        })
+      }
     })
   },
   initCurrentLocation () {
